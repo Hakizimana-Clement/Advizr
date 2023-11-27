@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="logo.svg" type="image/svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--google sheet  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- favicon -->
+    <link
+      href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0EQAANBmAADQuwAA0FcAANAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0EsAANCUAADQjgAA0MoAANALAADQsQAA0JwAANA9AADQAQAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAQAA0IYAANB2AADQIQAA0MUAANCwAADQcwAA0IcAAND/AADQ/wAA0NwAANB9AADQBwAAAAAAAAAAAADQCAAA0KgAAND/AADQsAAA0KgAAND3AADQfgAA0P8AAND/AADQ/wAA0P8AAND/AADQ/wAA0EAAAAAAAADQFAAA0J8AAND/AADQ/wAA0P8AAND/AADQ/wAA0HYAAND/AADQ/wAA0NwAANBtAADQ9AAA0P8AANB8AAAAAAAA0HgAANAIAADQ/wAA0NYAANDsAADQ/wAA0P8AANB5AADQ/AAA0P8AANDpAADQFQAA0IwAAND/AADQtwAAAAAAANBcAADQUAAA0P0AANAWAADQkQAA0PoAANCzAADQpQAA0NAAAND/AADQ/wAA0OsAANDrAADQ/wAA0PAAANACAADQkAAA0P8AAND7AADQNAAA0NgAANCaAADQBQAA0NwAANCYAADQ/wAA0P8AAND/AADQ/wAA0NEAANDUAADQLwAA0F0AAND/AADQ/wAA0P8AAND/AADQsAAA0HUAANDPAADQQgAA0JYAANDqAADQ/wAA0P8AANCKAADQDAAA0FMAANAqAADQ/wAA0OkAAND/AADQ/wAA0P8AANCnAADQgwAA0OAAANCvAADQhwAA0HEAANCgAADQ6wAA0JMAANCUAADQAwAA0KsAANAHAADQ/AAA0PsAANB/AADQrAAA0OMAANAIAADQPQAA0P8AAND/AADQ0QAA0IAAANByAADQjAAAAAAAANBbAADQOgAA0OsAANBoAADQxwAA0HcAANB5AADQ/QAA0P8AAND/AADQ5AAA0DYAANA8AADQ+wAA0E4AAAAAAADQjwAA0MsAANBqAADQ6gAA0NoAANBpAADQrgAA0P8AAND+AADQuwAA0LUAANCtAADQwwAA0D0AAAAAAAAAAAAA0CoAANCAAADQ0gAA0BAAANA6AADQ/wAA0P8AAND/AADQzAAA0CEAANB1AADQrwAA0BIAAAAAAAAAAAAAAAAAAAAAAADQDgAA0FEAANByAADQ4AAA0P8AANDYAADQOgAA0F0AAND3AADQawAA0AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0AIAANA1AADQbAAA0GsAANC2AADQLwAAAAAAAAAAAAAAAAAAAAAAAAAA/v8AAPifAADshwAAwQMAAIETAADBEQAA0AEAABIBAACCgwAAgBAAAKTCAADrDQAAkgMAAMw3AAD43wAA/78AAA=="
+      rel="icon"
+      type="image/x-icon"
+    />
+    <title>Advice Generator APP</title>
+  </head>
+  <body class="bg-D_gray-DEFAUT_Dark_Blue">
+    <!-- ################ Container  ################## -->
+    <main class="grid h-screen place-items-center m-0">
+      <!--################## Advice container ##################-->
+      <div
+        class="bg-D_gray-Dark_grayish_blue text-center py-6 px-5 rounded-lg relative w-[93%] sm:w-[65%] sm:m-auto md:w-[55%] lg:w-[50%] xl:w-[34%]"
+      >
+        <p class="text-D_gray-Neon_green text-sm tracking-widest md:text-lg">
+          Advice #<span id="advice-num"></span>
+        </p>
+        <h1
+          id="advice"
+          class="text-D_gray-Ligth_cyan text-2xl my-8 mx-1 font-Manrope"
+        >
+          Loading...... ⏳
+        </h1>
+        <!-- for mobile -->
+        <div class="mt-5 mb-10 flex justify-center lg:hidden">
+          <img src="pattern-divider-mobile.svg" alt="pattern-divider-mobile" />
+        </div>
+
+        <!-- for laptop-->
+        <div class="mt-5 mb-10 hidden lg:flex lg:justify-center">
+          <img src="pattern-divider-desktop.svg" alt="pattern-divider-mobile" />
+        </div>
+
+        <!-- random button -->
+        <div class="absolute inset-x-2">
+          <button
+            id="random-advice"
+            class="p-5 bg-D_gray-Neon_green rounded-full hover: hover: -translate-x-0 transform transition hover:shadow-glow"
+          >
+            <img src="icon-dice.svg" alt="dice icon" />
+          </button>
+        </div>
+      </div>
+    </main>
+    <!-- javaScript file -->
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
