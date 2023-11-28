@@ -13,12 +13,16 @@ const signupInput = document.querySelectorAll(".signup-input");
 const signup = () => {
   // console.log("signup");
   createNewAccount.addEventListener("click", () => {
+    console.log("signup clicked");
+    // enable all input for sign up
     signupInput.forEach((input) => {
       input.style.display = "block";
     });
-    console.log("signup clicked");
+    // change login from Login to sign up in h2
     Signinheading.textContent = "Sign up";
+    //  change btn from login to sign up
     signBtn.textContent = "Sign up";
+    // change p element
     loginEl.innerHTML = `<p>Already have an account? <a href="test">Login</a></p>`;
     // test.classList.add("toggle-form");
     // const buttonEl = document.createElement("button");
@@ -31,7 +35,7 @@ const signup = () => {
 };
 
 // ############### Login ##################
-const login = () => {
+const loginIcon = () => {
   loginBtn.addEventListener("click", () => {
     console.log("login");
     mainEl.classList.toggle("toggle-off");
@@ -41,4 +45,4 @@ const login = () => {
   });
 };
 
-export { login, signup };
+export { loginIcon, signup };
