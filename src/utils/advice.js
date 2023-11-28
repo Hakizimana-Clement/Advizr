@@ -1,14 +1,15 @@
-import request from "./request";
-const adviceElement = document.querySelector("#advice");
-const adviceNumElement = document.querySelector("#advice-num");
+import apiRequest from "./api-request";
+const adviceParagraphEl = document.querySelector("#advice");
+const adviceIdElement = document.querySelector("#advice-num");
+
 const advice = () => {
-  request()
+  apiRequest()
     .then((data) => {
-      adviceNumElement.textContent = `${data.id}`;
-      adviceElement.textContent = `"${data.advice}"`;
+      adviceIdElement.textContent = `${data.id}`;
+      adviceParagraphEl.textContent = `"${data.advice}"`;
     })
     .catch((e) => {
-      adviceElement.textContent = "Error: Unable to fetch advice ❌";
+      adviceParagraphEl.textContent = "Error: Unable to fetch advice ❌";
       console.log(e);
     });
 };
