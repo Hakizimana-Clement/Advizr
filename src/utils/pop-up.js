@@ -7,8 +7,15 @@ const signBtn = document.querySelector(".sign-btn");
 const loginEl = document.querySelector(".login");
 const signupInput = document.querySelectorAll(".signup-input");
 const forgotPasswordEl = document.querySelector(".forgot-message");
+const forgetRedirectLink = document.querySelector(".forget-link");
 // let isOpen= false;
 
+// ############### Update url query params ##################
+const updateURL = (key, value) => {
+  const url = new URL(window.location.href);
+  url.searchParams.set(key, value);
+  window.history.replaceState({}, document.title, url.href);
+};
 // ############### Signup ##################
 const signup = () => {
   // console.log("signup");
@@ -23,10 +30,12 @@ const signup = () => {
     //  change btn from login to sign up
     signBtn.textContent = "Sign up";
     // change p element
-    loginEl.innerHTML = `<p>Already have an account? <a href="test">Login</a></p>`;
+    loginEl.innerHTML = `<p>Already have an account? <a href="http://localhost:5173/?tag=login">Login</a></p>`;
     // hide forgot message
     forgotPasswordEl.classList.toggle("toggle-off");
     document.querySelector(".reset-password").style.display = "none";
+    // update query params
+    updateURL("tag", "signup");
     // test.classList.add("toggle-form");
     // const buttonEl = document.createElement("button");
     // buttonEl.textContent = "Login";
@@ -43,6 +52,8 @@ const loginIcon = () => {
     console.log("login");
     mainEl.classList.toggle("toggle-off");
     popupEl.classList.toggle("toggle-on");
+
+    updateURL("tag", "login");
     // createNewAccount.classList.add('')
     // isClose = mainEl.classList.toggle("toggle");
   });
@@ -65,6 +76,13 @@ const forgetPassword = () => {
     // hide
     forgotPasswordEl.classList.toggle("toggle-off");
     loginEl.classList.toggle("toggle-off");
+
+    // redirect to login page
+    forgetRedirectLink.classList.add("toggle-on-og");
+    forgetRedirectLink.setAttribute("href", "http://localhost:5173/?tag=login");
+
+    // update query params
+    updateURL("tag", "forget");
   });
 };
 export { loginIcon, signup, forgetPassword };

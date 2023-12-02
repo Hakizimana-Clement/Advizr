@@ -1,7 +1,10 @@
 const formEl = document.querySelector(".sign-form");
 import { v4 as uuidv4 } from "uuid";
 import showError from "./errorValidation";
-let users = [];
+import { getSavedUser } from "./functions";
+const users = [];
+const user = getSavedUser();
+
 let SignupFormError = {
   fullName: null,
   email: null,
@@ -20,6 +23,18 @@ const signinForm = () => {
       password: e.target.elements.password.value,
     };
     // console.log(data);
+    // const real = user.find((user) =>{
+    //   user.username === data.username && user.password === data.user
+    // })
+    const real = user.filter(
+      (user) =>
+        user.username === data.username && user.password === data.password
+    );
+    console.log(real[0].id);
+    console.log(real.id);
+
+    location.assign(`/src/dashboard/index.html#${real[0].id}`);
+    console.log(getSavedUser());
   });
 };
 
@@ -30,28 +45,28 @@ const signupForm = () => {
     /////////////// validation //////////////////
     let hasError = false;
     // full name
-    if (e.target.elements.fullName.value.length === 0) {
-      SignupFormError.fullName = "🟠 Names should not be empty";
+    if (e.target.elements.fullName.value.length < 4) {
+      SignupFormError.fullName = "🟠 be great than 4 character";
       hasError = true;
     } else {
       SignupFormError.fullName = null;
     }
     //email
-    if (e.target.elements.email.value.length === 0) {
+    if (e.target.elements.email.value.length < 4) {
       SignupFormError.email = "Email should not be empty";
       hasError = true;
     } else {
       SignupFormError.email = null;
     }
     // username
-    if (e.target.elements.username.value.length === 0) {
+    if (e.target.elements.username.value.length < 4) {
       SignupFormError.username = "Username should not be empty";
       hasError = true;
     } else {
       SignupFormError.username = null;
     }
     // password
-    if (e.target.elements.password.value.length === 0) {
+    if (e.target.elements.password.value.length < 4) {
       SignupFormError.password = "Password should not be empty";
       hasError = true;
     } else {
@@ -72,13 +87,15 @@ const signupForm = () => {
       username: e.target.elements.username.value,
       password: e.target.elements.password.value,
     };
-    console.log(data);
+
+    // users.push({id:id});
+    // localStorage.setItem("ids", JSON.stringify(users));
     users.push(data);
-    localStorage.setItem("adive-users", JSON.stringify(users));
-    // location.assign(`src/dashboard/index.html#${id}`);
+    localStorage.setItem("advice-users", JSON.stringify(users));
+    // redirect to other login page
+    // location.assign(`/src/dashboard/index.html#${id}`);
     formEl.reset();
   });
-  // console.log(users);
 };
 
 export { signinForm, signupForm };

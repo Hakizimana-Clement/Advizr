@@ -14,6 +14,8 @@ const showError = (error) => {
   } else if (error.password !== null) {
     document.querySelector("#password").textContent = error.password;
     document.querySelector("#password").style.display = "block";
+  } else {
+    document.querySelector("#fullName").textContent = "";
   }
   signupForm();
 };
