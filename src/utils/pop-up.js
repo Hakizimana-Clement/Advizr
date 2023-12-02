@@ -5,8 +5,8 @@ const createNewAccount = document.querySelector(".create-new-account");
 const Signinheading = document.querySelector(".sign-heading");
 const signBtn = document.querySelector(".sign-btn");
 const loginEl = document.querySelector(".login");
-const test = document.querySelector(".testing");
 const signupInput = document.querySelectorAll(".signup-input");
+const forgotPasswordEl = document.querySelector(".forgot-message");
 // let isOpen= false;
 
 // ############### Signup ##################
@@ -14,7 +14,7 @@ const signup = () => {
   // console.log("signup");
   createNewAccount.addEventListener("click", () => {
     console.log("signup clicked");
-    // enable all input for sign up
+    // Enable all input for sign up
     signupInput.forEach((input) => {
       input.style.display = "block";
     });
@@ -24,6 +24,9 @@ const signup = () => {
     signBtn.textContent = "Sign up";
     // change p element
     loginEl.innerHTML = `<p>Already have an account? <a href="test">Login</a></p>`;
+    // hide forgot message
+    forgotPasswordEl.classList.toggle("toggle-off");
+    document.querySelector(".reset-password").style.display = "none";
     // test.classList.add("toggle-form");
     // const buttonEl = document.createElement("button");
     // buttonEl.textContent = "Login";
@@ -45,4 +48,23 @@ const loginIcon = () => {
   });
 };
 
-export { loginIcon, signup };
+// ############### Forget ##################
+const forgetPassword = () => {
+  console.log("clicked");
+  forgotPasswordEl.addEventListener("click", () => {
+    console.log("clicked clicked");
+    // change heading title
+    Signinheading.textContent = "Reset password";
+    //  change btn login
+    signBtn.textContent = "Send Password Reset Link";
+    // display on username and password
+    document.querySelector(".username").style.display = "none";
+    document.querySelector(".password").style.display = "none";
+    // reset password
+    document.querySelector(".reset-password").style.display = "block";
+    // hide
+    forgotPasswordEl.classList.toggle("toggle-off");
+    loginEl.classList.toggle("toggle-off");
+  });
+};
+export { loginIcon, signup, forgetPassword };

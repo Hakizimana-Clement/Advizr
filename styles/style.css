@@ -3,10 +3,43 @@
 @tailwind utilities;
 
 @layer components {
-  .btn {
+  /* .btn {
     @apply;
   }
   .padding {
     @apply lg:px-16;
+  } */
+  .toggle-bookmark {
+    fill: #52ffa8;
+    filter: drop-shadow(0 0 2px #52ffa8) !important;
   }
+  .bookmark-shadow {
+    filter: drop-shadow(1px 2px 2px rgb(0 0 0 / 0.3));
+    cursor: pointer;
+  }
+  .login-btn {
+    filter: drop-shadow(0 0 1px #52ffa8);
+  }
+  .toggle-off {
+    display: none !important;
+  }
+
+  .toggle-form-on {
+    display: block;
+  }
+  .toggle-on {
+    /* display: block !important; */
+    @apply grid justify-items-center items-center justify-center h-[80vh] !important;
+  }
+  .glow-btn {
+    box-shadow: 0px 0px 14px #52ffa8;
+  }
+  /* form */
+  .toggle-form {
+    display: block;
+  }
+  .loginBtn {
+    @apply inline-block py-2 px-5 mt-8 text-D_gray-Ligth_cyan border-solid border-2 rounded hover:bg-white hover:shadow-md hover:text-gray-900  hover:-translate-y-1 transform;
+  }
+  /* @apply py-2 px-5 mt-8 text-D_gray-DEFAUT_Dark_Blue  rounded hover:glow-btn; */
 }

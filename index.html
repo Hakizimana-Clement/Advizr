@@ -13,23 +13,73 @@
     />
     <!-- favicon -->
     <link rel="shortcut icon" href="favicon.ico" />
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="styles/style.css" />
     <title>Advizr App</title>
   </head>
   <body class="bg-D_gray-DEFAUT_Dark_Blue">
+    <header>
+      <div class="flex justify-end mt-4">
+        <!-- <a href="src/login/index.html" class="mr-2 hover:login-btn"> -->
+        <button class="mr-2 login-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="white"
+            class="w-8 h-8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+          </svg>
+        </button>
+        <!-- </a> -->
+      </div>
+    </header>
     <!-- ################ Container  ################## -->
-    <main class="grid h-screen place-items-center m-0">
+    <!-- This is for before login icon -->
+    <!-- <main class="grid h-screen place-items-center m-0"> -->
+    <!-- after implement login icon -->
+    <!-- <main class="advice-container grid h-[85vh] place-items-center m-0"> -->
+    <!-- testing login div -->
+    <main class="advice-container grid h-[85vh] place-items-center m-0">
+      <!-- <main class="advice-container grid h-[85vh] place-items-center m-0 hidden"> -->
       <!--################## Advice container ##################-->
       <div
         class="bg-D_gray-Dark_grayish_blue text-center py-6 px-5 rounded-lg relative w-[93%] sm:w-[65%] sm:m-auto md:w-[55%] lg:w-[50%] xl:w-[34%]"
       >
+        <!-- ########### Bookmark -->
+        <div class="absolute right-2 -top-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#cee3e9"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke=""
+            class="w-12 h-12 bookmark-icon bookmark-shadow"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+            />
+          </svg>
+        </div>
         <p class="text-D_gray-Neon_green text-sm tracking-widest md:text-lg">
           Advice #<span id="advice-num"></span>
         </p>
         <h1
-          id="advice"
           class="text-D_gray-Ligth_cyan text-2xl my-8 mx-1 font-Manrope"
+          id="advice"
         >
-          Loading...... ⏳
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum eius
+          quos maiores sapiente ipsum, atque nisi error commodi dolorum
+          necessitatibus sed? Debitis reiciendis ea id dolorem error veritatis
+          atque tempora? Loading...... ⏳
         </h1>
         <!-- for mobile -->
         <div class="mt-5 mb-10 flex justify-center lg:hidden">
@@ -52,6 +102,107 @@
         </div>
       </div>
     </main>
+
+    <!--################## popup  ################### -->
+    <!-- <div class="pop-up hidden"> -->
+    <div class="pop-up hidden text-center font-Manrope">
+      <!-- loading -->
+      <!-- <div
+      class="pop-up text-center text-D_gray-Ligth_cyan font-Manrope h-[80vh] grid justify-items-center items-center"
+    > -->
+      <!-- <div
+      class=" pop-up text-center text-D_gray-Ligth_cyan font-Manrope h-[80vh] grid justify-items-center items-center"
+    > -->
+      <div class="bg-D_gray-Grayish_blue w-72 md:w-96 py-9 rounded-xl">
+        <h2 class="text-xl uppercase mb-5 tracking-widest sign-heading">
+          Login
+        </h2>
+        <div>
+          <form class="sign-form flex items-center flex-col space-y-7">
+            <!-- vvvvvvvv create new account input -->
+            <input
+              name="fullName"
+              type="text"
+              placeholder="Names"
+              class="hidden signup-input w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
+            />
+            <!-- ^ name error message -->
+            <span
+              id="fullName"
+              class="hidden text-yellow-500 font-sans font-semibold"
+            ></span>
+            <input
+              name="email"
+              type="email"
+              placeholder="Email"
+              class="hidden signup-input w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
+            />
+            <!-- ^ email error message -->
+            <span
+              id="email"
+              class="hidden text-yellow-500 font-sans font-semibold"
+            ></span>
+            <!-- ^^^^^^^^^^^^ -->
+            <input
+              name="username"
+              type="text"
+              placeholder="Username"
+              class="username block w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
+            />
+            <!-- ^ username error message -->
+            <span
+              id="username"
+              class="hidden text-yellow-500 font-sans font-semibold"
+            ></span>
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              class="password block w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-DEFAUT_Dark_Blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-DEFAUT_Dark_Blue sm:text-sm sm:leading-6"
+            />
+            <!-- ^ password error message -->
+            <span
+              id="password"
+              class="hidden text-yellow-500 font-sans font-semibold"
+            ></span>
+
+            <!-- vvvvvvvv create new account input -->
+            <input
+              name="reset-password"
+              type="email"
+              placeholder="Email"
+              class="reset-password hidden signup-input w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
+            />
+            <!-- ^^^^^^^^^^^^ -->
+            <button
+              class="py-2 px-7 mt-8 text-D_gray-DEFAUT_Dark_Blue bg-D_gray-Neon_green rounded hover:glow-btn sign-btn"
+            >
+              Login
+            </button>
+          </form>
+          <div class="mt-8 space-y-2">
+            <a
+              id="forget-password"
+              class="forgot-message inline-block font-semibold font-sans underline text-D_gray-DEFAUT_Dark_Blue hover:text-black hover:no-underline"
+              >Forgot Your Password ?</a
+            >
+            <!-- <a
+              class="inline-block py-2 px-5 mt-4 cursor-pointer text-D_gray-Ligth_cyan border-solid border-2 rounded hover:bg-white hover:shadow-md hover:text-gray-900 hover:glow hover:-translate-y-1 transform sign-btn"
+              >Sign up</a
+              > -->
+            <p
+              class="text-D_gray-DEFAUT_Dark_Blue font-normal tracking-tight login"
+            >
+              You don't have an account?
+              <span
+                class="underline cursor-pointer hover:text-black create-new-account hover:no-underline"
+                >Sign up</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- javaScript file -->
     <script type="module" src="src/main.js"></script>
   </body>
