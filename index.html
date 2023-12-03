@@ -7,10 +7,10 @@
     <!--google sheet  -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
+    <!-- <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap"
       rel="stylesheet"
-    />
+    /> -->
     <!-- favicon -->
     <link rel="shortcut icon" href="favicon.ico" />
     <!-- stylesheet -->
@@ -40,6 +40,7 @@
         <!-- </a> -->
       </div>
     </header>
+    <a href="./src/dashboard/index.html"></a>
     <!-- ################ Container  ################## -->
     <!-- This is for before login icon -->
     <!-- <main class="grid h-screen place-items-center m-0"> -->
@@ -113,92 +114,194 @@
       <!-- <div
       class=" pop-up text-center text-D_gray-Ligth_cyan font-Manrope h-[80vh] grid justify-items-center items-center"
     > -->
+      <!-- vvvvv THIS WORKING 100% vvvv -->
+      <!-- ************* forms container****************** -->
       <div class="bg-D_gray-Grayish_blue w-72 md:w-96 py-9 rounded-xl">
-        <h2 class="text-xl uppercase mb-5 tracking-widest sign-heading">
-          Login
-        </h2>
-        <div>
-          <form class="sign-form flex items-center flex-col space-y-7">
-            <!-- vvvvvvvv create new account input -->
-            <input
-              name="fullName"
-              type="text"
-              placeholder="Names"
-              class="hidden signup-input w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
-            />
-            <!-- ^ name error message -->
-            <span
-              id="fullName"
-              class="hidden text-yellow-500 font-sans font-semibold"
-            ></span>
-            <input
-              name="email"
-              type="email"
-              placeholder="Email"
-              class="hidden signup-input w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
-            />
-            <!-- ^ email error message -->
-            <span
-              id="email"
-              class="hidden text-yellow-500 font-sans font-semibold"
-            ></span>
-            <!-- ^^^^^^^^^^^^ -->
-            <input
-              name="username"
-              type="text"
-              placeholder="Username"
-              class="username block w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
-            />
-            <!-- ^ username error message -->
-            <span
-              id="username"
-              class="hidden text-yellow-500 font-sans font-semibold"
-            ></span>
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              class="password block w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-DEFAUT_Dark_Blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-DEFAUT_Dark_Blue sm:text-sm sm:leading-6"
-            />
-            <!-- ^ password error message -->
-            <span
-              id="password"
-              class="hidden text-yellow-500 font-sans font-semibold"
-            ></span>
+        <!-- ************* LOGIN *************-->
+        <div
+          id="login-form"
+          class="justify-items-center items-center justify-center"
+        >
+          <h2 class="text-xl uppercase mb-5 tracking-widest sign-heading">
+            Login
+          </h2>
+          <div>
+            <form class="sign-form flex items-center flex-col space-y-7">
+              <input
+                name="username"
+                type="text"
+                placeholder="Username"
+                class="username block w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
+              />
+              <!-- ^ username error message -->
+              <span
+                id="username"
+                class="hidden text-yellow-500 font-sans font-semibold"
+              ></span>
+              <input
+                name="password"
+                type="password"
+                placeholder="Password"
+                class="password block w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-DEFAUT_Dark_Blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-DEFAUT_Dark_Blue sm:text-sm sm:leading-6"
+              />
+              <!-- ^ password error message -->
+              <span
+                id="password"
+                class="hidden text-yellow-500 font-sans font-semibold"
+              ></span>
 
-            <!-- vvvvvvvv create new account input -->
-            <input
-              name="reset-password"
-              type="email"
-              placeholder="Email"
-              class="reset-password hidden signup-input w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
-            />
-            <!-- ^^^^^^^^^^^^ -->
-            <button
-              class="py-2 px-7 mt-8 text-D_gray-DEFAUT_Dark_Blue bg-D_gray-Neon_green rounded hover:glow-btn sign-btn"
-            >
-              Login
-            </button>
-          </form>
-          <div class="mt-8 space-y-2">
-            <a
-              id="forget-password"
-              class="forgot-message inline-block font-semibold font-sans underline text-D_gray-DEFAUT_Dark_Blue hover:text-black hover:no-underline"
-              >Forgot Your Password ?</a
-            >
-            <!-- <a
+              <button
+                class="py-2 px-7 mt-8 text-D_gray-DEFAUT_Dark_Blue bg-D_gray-Neon_green rounded hover:glow-btn sign-btn"
+              >
+                Login
+              </button>
+            </form>
+            <div class="mt-8 space-y-2">
+              <p class="text-yellow-500 font-bold hidden user-not-exist">
+                ⚠ User doesn't exist ⚠
+              </p>
+              <a
+                id="forget-password"
+                class="forget-password inline-block font-semibold font-sans underline text-D_gray-DEFAUT_Dark_Blue hover:text-black hover:no-underline hover:cursor-pointer"
+              >
+                <!-- id="forget-password"
+                class="forgot-message inline-block font-semibold font-sans underline text-D_gray-DEFAUT_Dark_Blue hover:text-black hover:no-underline" -->
+                Forgot Your Password ?</a
+              >
+              <!-- <a
               class="inline-block py-2 px-5 mt-4 cursor-pointer text-D_gray-Ligth_cyan border-solid border-2 rounded hover:bg-white hover:shadow-md hover:text-gray-900 hover:glow hover:-translate-y-1 transform sign-btn"
               >Sign up</a
               > -->
-            <p
-              class="text-D_gray-DEFAUT_Dark_Blue font-normal tracking-tight login"
-            >
-              You don't have an account?
-              <span
-                class="underline cursor-pointer hover:text-black create-new-account hover:no-underline"
-                >Sign up</span
+              <p
+                class="text-D_gray-DEFAUT_Dark_Blue font-normal tracking-tight login"
               >
-            </p>
+                You don't have an account?
+                <span
+                  class="direct-to-singup-form-only underline cursor-pointer hover:text-black create-new-account hover:no-underline"
+                  >Sign up</span
+                >
+              </p>
+              <a
+                class="forget-link underline text-D_gray-DEFAUT_Dark_Blue hover:text-black hover:cursor-pointer font-normal hidden"
+                >Login as different user</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- ************* SIGNUP *************-->
+
+        <div id="signup-form" class="hidden">
+          <!-- <div id="signup-form" class="hidden signup-form-only"> -->
+          <h2 class="text-xl uppercase mb-5 tracking-widest sign-heading">
+            Signup
+          </h2>
+          <div>
+            <form class="sign-form flex items-center flex-col space-y-7">
+              <!-- vvvvvvvv create new account input -->
+              <input
+                name="fullName"
+                type="text"
+                placeholder="Names"
+                class="signup-input w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
+              />
+              <!-- ^ name error message -->
+              <span
+                id="fullName"
+                class="hidden text-yellow-500 font-sans font-semibold"
+              ></span>
+              <input
+                name="email"
+                type="email"
+                placeholder="Email"
+                class="signup-input w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
+              />
+              <!-- ^ email error message -->
+              <span
+                id="email"
+                class="hidden text-yellow-500 font-sans font-semibold"
+              ></span>
+              <!-- ^^^^^^^^^^^^ -->
+              <input
+                name="username"
+                type="text"
+                placeholder="Username"
+                class="username block w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
+              />
+              <!-- ^ username error message -->
+              <span
+                id="username"
+                class="hidden text-yellow-500 font-sans font-semibold"
+              ></span>
+              <input
+                name="password"
+                type="password"
+                placeholder="Password"
+                class="password block w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-DEFAUT_Dark_Blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-DEFAUT_Dark_Blue sm:text-sm sm:leading-6"
+              />
+              <!-- ^ password error message -->
+              <span
+                id="password"
+                class="hidden text-yellow-500 font-sans font-semibold"
+              ></span>
+
+              <!-- vvvvvvvv create new account input -->
+              <input
+                name="reset-password"
+                type="email"
+                placeholder="Email"
+                class="reset-password hidden signup-input w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
+              />
+              <!-- ^^^^^^^^^^^^ -->
+              <button
+                class="py-2 px-7 mt-8 text-D_gray-DEFAUT_Dark_Blue bg-D_gray-Neon_green rounded hover:glow-btn sign-btn"
+              >
+                Signup
+              </button>
+            </form>
+            <div class="mt-8 space-y-2">
+              <p class="text-yellow-500 font-bold hidden user-not-exist">
+                ⚠ User doesn't exist ⚠
+              </p>
+              <p class="text-D_gray-DEFAUT_Dark_Blue font-normal">
+                Already have an account?
+                <a
+                  class="redirect-to-login forget-link underline text-D_gray-DEFAUT_Dark_Blue hover:text-black hover:cursor-pointer font-normal"
+                  >Login</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ************* FORGET PASSWORD *************-->
+        <div id="forget-form" class="hidden signup-form-only">
+          <h2 class="text-xl uppercase mb-5 tracking-widest sign-heading">
+            Reset password
+          </h2>
+          <div>
+            <form class="sign-form flex items-center flex-col space-y-7">
+              <input
+                name="reset-password"
+                type="email"
+                placeholder="Email"
+                class="reset-password signup-input w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
+              />
+              <!-- ^^^^^^^^^^^^ -->
+              <button
+                class="py-2 px-7 mt-8 text-D_gray-DEFAUT_Dark_Blue bg-D_gray-Neon_green rounded hover:glow-btn sign-btn"
+              >
+                Send email link
+              </button>
+            </form>
+            <div class="mt-8 space-y-2">
+              <a
+                id="redirect-to-login"
+                class="underline text-D_gray-DEFAUT_Dark_Blue hover:text-black hover:cursor-pointer font-normal"
+              >
+                <!-- class="forget-link underline text-D_gray-DEFAUT_Dark_Blue hover:text-black font-normal" -->
+                Login as different user</a
+              >
+            </div>
           </div>
         </div>
       </div>

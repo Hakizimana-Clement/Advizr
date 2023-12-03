@@ -20,17 +20,22 @@
   .login-btn {
     filter: drop-shadow(0 0 1px #52ffa8);
   }
-  .toggle-off {
-    display: none !important;
-  }
 
   .toggle-form-on {
     display: block;
+  }
+  .toggle-on-og {
+    display: block !important;
   }
   .toggle-on {
     /* display: block !important; */
     @apply grid justify-items-center items-center justify-center h-[80vh] !important;
   }
+
+  .toggle-off {
+    display: none !important;
+  }
+
   .glow-btn {
     box-shadow: 0px 0px 14px #52ffa8;
   }

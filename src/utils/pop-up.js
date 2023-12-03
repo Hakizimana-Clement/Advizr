@@ -49,7 +49,7 @@ const signup = () => {
 // ############### Login ##################
 const loginIcon = () => {
   loginBtn.addEventListener("click", () => {
-    console.log("login");
+    console.log("login icon clicked");
     mainEl.classList.toggle("toggle-off");
     popupEl.classList.toggle("toggle-on");
 
@@ -61,7 +61,7 @@ const loginIcon = () => {
 
 // ############### Forget ##################
 const forgetPassword = () => {
-  console.log("clicked");
+  // console.log("clicked");
   forgotPasswordEl.addEventListener("click", () => {
     console.log("clicked clicked");
     // change heading title
@@ -86,3 +86,4 @@ const forgetPassword = () => {
   });
 };
 export { loginIcon, signup, forgetPassword };
+// export { loginIcon };

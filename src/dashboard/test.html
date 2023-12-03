@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag Query Parameter Example</title>
+    <style>
+      /* Add your styles for the login container here */
+      #login-container {
+        display: none;
+        /* Add other styles as needed */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Your content -->
+    <h1>Your Page Content</h1>
+
+    <!-- Login container -->
+    <div id="login-container">
+      <!-- Your login form and content go here -->
+      <p>Login form goes here</p>
+    </div>
+
+    <!-- Trigger for displaying login container -->
+    <button onclick="displayLogin()">Display Login</button>
+
+    <script>
+      function displayLogin() {
+        // Show the login container
+        document.getElementById("login-container").style.display = "block";
+
+        // Add the tag query parameter to the URL
+        updateURL("tag", "logout");
+      }
+
+      function updateURL(key, value) {
+        // Get the current URL
+        var url = new URL(window.location.href);
+
+        // Update or add the query parameter
+        url.searchParams.set(key, value);
+
+        // Replace the current state in the browser's history
+        // without triggering a page refresh
+        window.history.replaceState({}, document.title, url.href);
+      }
+    </script>
+  </body>
+</html>

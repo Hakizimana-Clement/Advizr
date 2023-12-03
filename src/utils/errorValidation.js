@@ -1,4 +1,4 @@
-import { signupForm } from "../utils/forms";
+// import { signupForm } from "../utils/forms";
 const showError = (error) => {
   if (error.fullName !== null) {
     // document.querySelector(".hello").textContent = "hello";
@@ -17,7 +17,7 @@ const showError = (error) => {
   } else {
     document.querySelector("#fullName").textContent = "";
   }
-  signupForm();
+  // signupForm();
 };
 
 export default showError;

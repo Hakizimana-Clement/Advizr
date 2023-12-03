@@ -26,15 +26,22 @@ const signinForm = () => {
     // const real = user.find((user) =>{
     //   user.username === data.username && user.password === data.user
     // })
-    const real = user.filter(
+    const real = user.find(
       (user) =>
         user.username === data.username && user.password === data.password
     );
-    console.log(real[0].id);
-    console.log(real.id);
+    if (real === undefined) {
+      document.querySelector(".user-not-exist").style.display = "block";
+      // throw new Error("User doesn't exist");
+    } else {
+      location.assign(`/src/dashboard/index.html#${real.id}`);
+    }
+    // console.log(real);
+    // console.log(real[0].id);
+    // console.log(real.id);
 
-    location.assign(`/src/dashboard/index.html#${real[0].id}`);
-    console.log(getSavedUser());
+    // location.assign(`/src/dashboard/index.html#${real[0].id}`);
+    // console.log(getSavedUser());
   });
 };
 
@@ -75,10 +82,10 @@ const signupForm = () => {
 
     showError(SignupFormError);
 
-    if (hasError) {
-      console.log("Error");
-      return;
-    }
+    // if (hasError) {
+    //   console.log("Error");
+    //   return;
+    // }
     ////////////////////////////////
     const data = {
       id: id,
