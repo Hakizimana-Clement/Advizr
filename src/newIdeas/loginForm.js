@@ -2,9 +2,10 @@ const loginContainer = document.querySelector("#login-form");
 const loginForm = document.querySelector(".sign-form");
 const forgetPasswordEl = document.querySelector(".forget-password");
 const forgetForm = document.querySelector("#forget-form");
+const backToLogin = document.querySelector("#redirect-to-login");
+import { updateURL } from "./addQueryParameter";
 // const backToLogin = document.querySelector(".redirect-to-login");
 
-const backToLogin = document.querySelector("#redirect-to-login");
 // ############### login ##################
 const loginFormOnly = () => {
   console.log("login only");
@@ -24,6 +25,8 @@ const loginFormOnly = () => {
     loginContainer.style.display = "none";
     forgetForm.style.display = "block";
     loginForm.style.display = "block";
+
+    updateURL("tag", "reset-password");
   });
 
   backToLogin.addEventListener("click", () => {
@@ -32,6 +35,8 @@ const loginFormOnly = () => {
     // loginForm.style.display = "block";
     loginContainer.style.display = "grid";
     // loginContainer.classList.toggle("toggle-on");
+
+    updateURL("tag", "login");
   });
 };
 
