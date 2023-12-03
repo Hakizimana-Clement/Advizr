@@ -196,7 +196,8 @@
             Signup
           </h2>
           <div>
-            <form class="sign-form flex items-center flex-col space-y-7">
+            <!-- <form class="sign-form flex items-center flex-col space-y-7"> -->
+            <form class="signup-form flex items-center flex-col space-y-7">
               <!-- vvvvvvvv create new account input -->
               <input
                 name="fullName"
@@ -244,14 +245,6 @@
                 class="hidden text-yellow-500 font-sans font-semibold"
               ></span>
 
-              <!-- vvvvvvvv create new account input -->
-              <input
-                name="reset-password"
-                type="email"
-                placeholder="Email"
-                class="reset-password hidden signup-input w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
-              />
-              <!-- ^^^^^^^^^^^^ -->
               <button
                 class="py-2 px-7 mt-8 text-D_gray-DEFAUT_Dark_Blue bg-D_gray-Neon_green rounded hover:glow-btn sign-btn"
               >
@@ -259,9 +252,6 @@
               </button>
             </form>
             <div class="mt-8 space-y-2">
-              <p class="text-yellow-500 font-bold hidden user-not-exist">
-                ⚠ User doesn't exist ⚠
-              </p>
               <p class="text-D_gray-DEFAUT_Dark_Blue font-normal">
                 Already have an account?
                 <a
