@@ -5,10 +5,13 @@ import advice from "./utils/advice";
 import bookmark from "./utils/bookmark";
 // import { loginIcon, signup, forgetPassword } from "./utils/pop-up";
 import { loginIcon } from "./utils/pop-up";
-import { signinForm, signupForm } from "./utils/forms";
+// import { signinForm, signupForm } from "./utils/forms";
 // new data
 import { loginFormOnly } from "./newIdeas/loginForm";
 import { signupFormOnly } from "./newIdeas/signupForm";
+// dashboard
+// import { navbar } from "./newIdeas/nabvar";
+// import { dashboard, navbar } from "./dashboard/dashboard";
 const randomButtonEl = document.querySelector("#random-advice");
 
 // ################### API ##############################
@@ -35,3 +38,5 @@ loginIcon();
 loginFormOnly();
 
 signupFormOnly();
+
+// dashboard

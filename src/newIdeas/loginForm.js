@@ -4,22 +4,24 @@ const forgetPasswordEl = document.querySelector(".forget-password");
 const forgetForm = document.querySelector("#forget-form");
 const backToLogin = document.querySelector("#redirect-to-login");
 import { updateURL } from "./addQueryParameter";
+import { userAuth } from "./userAuth";
 // const backToLogin = document.querySelector(".redirect-to-login");
 
 // ############### login ##################
 const loginFormOnly = () => {
   console.log("login only");
+  //-> login form
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const loginData = {
       username: e.target.elements.username.value,
-      password: e.target.elements.username.value,
+      password: e.target.elements.password.value,
     };
     // user authentication
-    // userAuth(loginData)
-    console.log(loginData);
+    userAuth(loginData);
   });
 
+  //-> reset password form
   forgetPasswordEl.addEventListener("click", () => {
     console.log("forget password clicked");
     loginContainer.style.display = "none";
@@ -29,6 +31,7 @@ const loginFormOnly = () => {
     updateURL("tag", "reset-password");
   });
 
+  //-> go back to login form
   backToLogin.addEventListener("click", () => {
     console.log("back to login clicked");
     forgetForm.style.display = "none";

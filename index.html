@@ -7,10 +7,10 @@
     <!--google sheet  -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap"
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap"
       rel="stylesheet"
-    /> -->
+    />
     <!-- favicon -->
     <link rel="shortcut icon" href="favicon.ico" />
     <!-- stylesheet -->
@@ -54,34 +54,35 @@
         class="bg-D_gray-Dark_grayish_blue text-center py-6 px-5 rounded-lg relative w-[93%] sm:w-[65%] sm:m-auto md:w-[55%] lg:w-[50%] xl:w-[34%]"
       >
         <!-- ########### Bookmark -->
-        <div class="absolute right-2 -top-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="#cee3e9"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke=""
-            class="w-12 h-12 bookmark-icon bookmark-shadow"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-            />
-          </svg>
+        <div class="absolute hidden right-2 -top-2">
+          <div class="bookmark-active">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#cee3e9"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke=""
+              class="w-12 h-12 bookmark-icon bookmark-shadow"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+              />
+            </svg>
+          </div>
         </div>
-        <p class="text-D_gray-Neon_green text-sm tracking-widest md:text-lg">
-          Advice #<span id="advice-num"></span>
-        </p>
-        <h1
-          class="text-D_gray-Ligth_cyan text-2xl my-8 mx-1 font-Manrope"
-          id="advice"
-        >
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum eius
-          quos maiores sapiente ipsum, atque nisi error commodi dolorum
-          necessitatibus sed? Debitis reiciendis ea id dolorem error veritatis
-          atque tempora? Loading...... ⏳
-        </h1>
+        <div id="advice-data">
+          <p class="text-D_gray-Neon_green text-sm tracking-widest md:text-lg">
+            Advice #<span id="advice-num"></span>
+          </p>
+          <h1
+            class="text-D_gray-Ligth_cyan text-2xl my-8 mx-1 font-Manrope"
+            id="advice"
+          >
+            Loading...... ⏳
+          </h1>
+        </div>
         <!-- for mobile -->
         <div class="mt-5 mb-10 flex justify-center lg:hidden">
           <img src="pattern-divider-mobile.svg" alt="pattern-divider-mobile" />
@@ -89,7 +90,7 @@
 
         <!-- for laptop-->
         <div class="mt-5 mb-10 hidden lg:flex lg:justify-center">
-          <img src="pattern-divider-desktop.svg" alt="pattern-divider-mobile" />
+          <img src="pattern-divider-desktop.svg" alt="pattern-divider-laptop" />
         </div>
 
         <!-- random button -->
@@ -150,6 +151,9 @@
                 class="hidden text-yellow-500 font-sans font-semibold"
               ></span>
 
+              <p class="text-yellow-500 font-bold hidden user-not-exist">
+                ⚠ User doesn't exist ⚠
+              </p>
               <button
                 class="py-2 px-7 mt-8 text-D_gray-DEFAUT_Dark_Blue bg-D_gray-Neon_green rounded hover:glow-btn sign-btn"
               >
@@ -157,9 +161,9 @@
               </button>
             </form>
             <div class="mt-8 space-y-2">
-              <p class="text-yellow-500 font-bold hidden user-not-exist">
+              <!-- <p class="text-yellow-500 font-bold hidden user-not-exist">
                 ⚠ User doesn't exist ⚠
-              </p>
+              </p> -->
               <a
                 id="forget-password"
                 class="forget-password inline-block font-semibold font-sans underline text-D_gray-DEFAUT_Dark_Blue hover:text-black hover:no-underline hover:cursor-pointer"

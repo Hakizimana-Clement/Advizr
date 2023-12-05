@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-  /* .btn {
-    @apply;
-  }
-  .padding {
-    @apply lg:px-16;
-  } */
   .toggle-bookmark {
     fill: #52ffa8;
     filter: drop-shadow(0 0 2px #52ffa8) !important;
@@ -47,4 +41,50 @@
     @apply inline-block py-2 px-5 mt-8 text-D_gray-Ligth_cyan border-solid border-2 rounded hover:bg-white hover:shadow-md hover:text-gray-900  hover:-translate-y-1 transform;
   }
   /* @apply py-2 px-5 mt-8 text-D_gray-DEFAUT_Dark_Blue  rounded hover:glow-btn; */
+
+  /* Navbar */
+  .navbar-open {
+    @apply grid;
+  }
+  /* all advice container */
+  .advice-container-dom {
+    /* @apply bg-D_gray-Dark_grayish_blue py-6 px-5 rounded-lg relative mb-5 w-[93%] sm:w-[65%]  md:w-[55%] lg:w-[50%] xl:w-[34%]; */
+
+    @apply bg-D_gray-Dark_grayish_blue mt-9
+      py-6
+      px-5
+      rounded-lg
+      relative
+      w-[93%]
+      sm:w-full
+      /* sm:w-[65%] */
+      sm:m-auto
+      md:w-[55%]
+      lg:w-[50%]
+      xl:w-[34%]
+
+
+    /* @apply bg-D_gray-Dark_grayish_blue py-6 px-5 rounded-lg relative mb-5 w-full sm:w-[100%]  md:w-[100%] lg:w-[100%] xl:w-[100%]; */;
+  }
+  .advice-container-dom-id {
+    /* @apply text-red-300 text tracking-widest; */
+    display: inline-block;
+    color: #45ff93;
+    letter-spacing: 0.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .advice-container-dom-pEL {
+    color: #cee3e9;
+    /* font-weight: 500; */
+    font-size: larger;
+    margin-top: 0.2rem;
+  }
+
+  .advice-container-dom-button__container {
+    @apply flex justify-end;
+  }
+  .advice-container-dom-button {
+    @apply py-1 px-4 mt-6 text-gray-900 bg-violet-500 rounded hover:bg-violet-600;
+  }
 }
