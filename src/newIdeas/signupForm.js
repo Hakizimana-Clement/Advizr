@@ -5,9 +5,27 @@ const goToLogin = document.querySelector(".redirect-to-login");
 const signupForm = document.querySelector(".signup-form");
 import { updateURL } from "./addQueryParameter";
 import { v4 as uuidv4 } from "uuid";
+// NEW
+const signBtn = document.querySelector(".signup-btn");
+const mainEl = document.querySelector(".advice-container");
+const popupEl = document.querySelector(".pop-up");
 
 const signupFormOnly = () => {
   console.log("signup only");
+  //NEW
+  signBtn.addEventListener("click", () => {
+    console.log("signup btn only");
+
+    mainEl.classList.toggle("toggle-off");
+    // signupForm.classList.toggle("toggle-on");
+
+    // updateURL("tag", "login");
+
+    // loginContainer.style.display = "none";
+    // signupContainer.style.display = "block";
+    updateURL("tag", "signup");
+  });
+
   signupLink.addEventListener("click", () => {
     loginContainer.style.display = "none";
     signupContainer.style.display = "block";

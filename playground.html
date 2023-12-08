@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>playground</title>
+    <style>
+      .yes {
+        display: none;
+      }
+      .no {
+        display: none;
+      }
+
+      .showYes {
+        display: block;
+      }
+      .showNo {
+        display: block;
+      }
+
+      .hide {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>test</h1>
+    <button id="yes">yes</button>
+    <button id="no">no</button>
+
+    <div class="main-container">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
+        nostrum placeat possimus. Accusamus et doloremque fugit, numquam placeat
+        tempore quam recusandae earum corporis cupiditate suscipit adipisci!
+        Excepturi reiciendis quae optio.
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="yes">
+        <p>yes</p>
+      </div>
+
+      <div class="no">
+        <p>no</p>
+      </div>
+    </div>
+    <script>
+      const mainContainer = document.querySelector(".main-container");
+
+      const yes = document.querySelector("#yes");
+      const yesDiv = document.querySelector(".yes");
+      yes.addEventListener("click", () => {
+        yesDiv.classList.toggle("showYes");
+        document.querySelector(".no").classList.remove("showNo");
+        mainContainer.classList.toggle("hide");
+      });
+
+      const no = document.querySelector("#no");
+      const noDiv = document.querySelector(".no");
+      no.addEventListener("click", () => {
+        noDiv.classList.toggle("showNo");
+        document.querySelector(".yes").classList.remove("showYes");
+
+        mainContainer.classList.toggle("hide");
+      });
+    </script>
+  </body>
+</html>

@@ -12,6 +12,7 @@ const userAuth = (userData) => {
     throw new Error("User does not exist");
   } else {
     // redirect to other page
+    localStorage.setItem("loggedInID", userFound.id)
     location.assign(`/src/dashboard/index.html#${userFound.id}`);
   }
 };

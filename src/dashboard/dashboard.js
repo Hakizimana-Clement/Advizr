@@ -166,12 +166,12 @@ const renderAdvice = () => {
     simpleContainer.append(butttonContainer);
     allAdviceContainer.append(simpleContainer);
     allAdviceContainer.classList.add(
-      "bg-D_gray-Dark_grayish_blue",
-      "mt-9",
-      "py-6",
-      "px-5",
-      "rounded-lg",
-      "relative",
+      // "bg-D_gray-Dark_grayish_blue",
+      // "mt-9",
+      // "py-6",
+      // "px-5",
+      // "rounded-lg",
+      // "relative",
       "w-[93%]",
       "sm:w-[65%]",
       "sm:m-auto",

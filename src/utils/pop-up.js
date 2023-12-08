@@ -17,34 +17,36 @@ const updateURL = (key, value) => {
   window.history.replaceState({}, document.title, url.href);
 };
 // ############### Signup ##################
-const signup = () => {
-  // console.log("signup");
-  createNewAccount.addEventListener("click", () => {
-    console.log("signup clicked");
-    // Enable all input for sign up
-    signupInput.forEach((input) => {
-      input.style.display = "block";
-    });
-    // change login from Login to sign up in h2
-    Signinheading.textContent = "Sign up";
-    //  change btn from login to sign up
-    signBtn.textContent = "Sign up";
-    // change p element
-    loginEl.innerHTML = `<p>Already have an account? <a href="http://localhost:5173/?tag=login">Login</a></p>`;
-    // hide forgot message
-    forgotPasswordEl.classList.toggle("toggle-off");
-    document.querySelector(".reset-password").style.display = "none";
-    // update query params
-    updateURL("tag", "signup");
-    // test.classList.add("toggle-form");
-    // const buttonEl = document.createElement("button");
-    // buttonEl.textContent = "Login";
-    // buttonEl.classList.add("loginBtn");
-    // loginEl.append(buttonEl);
-    // change
-    // loginEl.textContent = "Login";
-  });
-};
+// const signup = () => {
+//   // console.log("signup");
+//   createNewAccount.addEventListener("click", () => {
+//     console.log("signup clicked");
+//     // Enable all input for sign up
+//     signupInput.forEach((input) => {
+//       input.style.display = "block";
+//     });
+//     // change login from Login to sign up in h2
+//     Signinheading.textContent = "Sign up";
+//     //  change btn from login to sign up
+//     signBtn.textContent = "Sign up";
+//     // change p element
+//     loginEl.innerHTML = `<p>Already have an account? <a href="http://localhost:5173/?tag=login">Login</a></p>`;
+//     // hide forgot message
+//     forgotPasswordEl.classList.toggle("toggle-off");
+//     document.querySelector(".reset-password").style.display = "none";
+//     // update query params
+//     updateURL("tag", "signup");
+//     // test.classList.add("toggle-form");
+//     // const buttonEl = document.createElement("button");
+//     // buttonEl.textContent = "Login";
+//     // buttonEl.classList.add("loginBtn");
+//     // loginEl.append(buttonEl);
+//     // change
+//     // loginEl.textContent = "Login";
+//   });
+// };
+
+const signup = () => {};
 
 // ############### Login ##################
 const loginIcon = () => {
