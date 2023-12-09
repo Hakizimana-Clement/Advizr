@@ -23,7 +23,7 @@
   }
   .toggle-on {
     /* display: block !important; */
-    @apply grid justify-items-center items-center justify-center h-[80vh] !important;
+    @apply grid justify-items-center items-center justify-center h-[69vh] mt-4 sm:mt-8 md:h-[80vh] !important;
   }
 
   .toggle-off {
@@ -101,20 +101,22 @@
     display: none !important;
   }
 
-  /* ############################# */
+  /* ########################################################## */
   .yes {
     display: none;
   }
 
   .yesShow {
-    @apply grid justify-items-center items-center justify-center h-[45vh] !important;
+    /* @apply grid justify-items-center items-center justify-center h-[45vh] !important; */
+    @apply grid justify-items-center items-center justify-center  !important;
   }
   .no {
     display: none;
   }
 
   .showNo {
-    @apply grid justify-items-center items-center justify-center h-[55vh] !important;
+    /* @apply grid justify-items-center items-center justify-center h-[55vh] !important; */
+    @apply grid justify-items-center items-center justify-center  !important;
   }
 
   .signup-toggle-on {

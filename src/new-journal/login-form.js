@@ -1,29 +1,74 @@
 // const loginBtn = document.querySelector(".login-btn");
-const loginBtn = document.querySelector("#yes");
+const loginBtnEl = document.querySelector("#yes");
 const signupBtn = document.querySelector(".no");
 
 const loginFormEl = document.querySelector(".login-form-new-v");
 const popUpEl = document.querySelector(".pop-up");
 const mainContainerEl = document.querySelector(".advice-container");
+const formEl = document.querySelector(".sign-form");
 
-const login = () => {
-  loginBtn.addEventListener("click", () => {
+import { loginError } from "./loginErroValidation";
+import { userAuth } from "./user-auth-new";
+
+// ############################# LOGIN BUTTON #################################
+const loginBtn = () => {
+  loginBtnEl.addEventListener("click", () => {
     console.log("clicked");
+    document.querySelector(".pop-up").classList.toggle("toggle-on");
     document.querySelector(".yes").classList.toggle("yesShow");
     document.querySelector(".no").classList.remove("showNo");
-
-    // // new
     mainContainerEl.classList.toggle("toggle-off");
-    // mainContainerEl.classList.toggle("login-toggle-on");
-    // loginFormEl.classList.toggle("new-toggle-on-login");
-
-    // document.querySelector(".signup-form").remove("new-toggle-on-signup");
-
-    // old
-    // mainContainerEl.classList.toggle("toggle-off"); // advice container
-    // popUpEl.classList.toggle("new-toggle-on-login");
-    // loginFormEl.classList.toggle("new-toggle-on-login");
   });
 };
 
-export { login };
+// ############################# LOGIN FORM #################################
+let loginFormError = {
+  username: null,
+  password: null,
+};
+
+const loginForm = () => {
+  formEl.addEventListener("submit", (e) => {
+    console.log("clicked login form");
+    e.preventDefault();
+
+    let hasError = false;
+    // username
+    if (e.target.elements.username.value.length === 0) {
+      loginFormError.username = "Username should not be empty";
+      hasError = true;
+    } else if (e.target.elements.username.value.length < 5) {
+      loginFormError.username = "Username should be greater than 5 character";
+      hasError = true;
+    } else {
+      loginFormError.username = null;
+    }
+    // password
+    if (e.target.elements.username.value.length === 0) {
+      loginFormError.password = "Password should not be empty";
+      hasError = true;
+    } else if (e.target.elements.password.value.length < 5) {
+      loginFormError.password = "Password should not be empty";
+      hasError = true;
+    } else {
+      loginFormError.password = null;
+    }
+
+    loginError(loginFormError);
+
+    if (hasError) {
+      console.log("Error");
+      return;
+    }
+    const loginData = {
+      username: e.target.elements.username.value,
+      password: e.target.elements.password.value,
+    };
+
+    userAuth(loginData);
+    console.log(data);
+    formEl.reset();
+  });
+};
+
+export { loginBtn, loginForm };

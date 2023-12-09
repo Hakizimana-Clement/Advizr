@@ -13,29 +13,38 @@ const savedAdviceLink = document.querySelector(".saved-advice");
 const allAdviceContainer = document.querySelector(".all-advice");
 // #############
 const discoverYourAdvice = document.querySelector(".discover");
+const bookmarkButton = document.querySelector(".bookmark-icon");
 
 // get advice saved from localstorage
 import { getSavedAdvices } from "../newIdeas/functions";
 const savedAdvices = getSavedAdvices();
 
-const userId = location.hash.substring(1);
-// bookmark
-const bookmarkButton = document.querySelector(".bookmark-icon");
-// get user from local storage
-const usersJSON = localStorage.getItem("users");
+// const userId = location.hash.substring(1);
+// // bookmark
+// // get user from local storage
+const usersJSON = localStorage.getItem("advice-users");
 const users = JSON.parse(usersJSON);
-const user = users.find((user) => user.id === userId);
+// const user = users.find((user) => user.id === userId);
 
-//#################  check if id valid #################
+// //#################  check if id valid #################
+// if (user === undefined) {
+//   location.assign("../../#");
+// }
+// if (usersJSON !== null) {
+//   JSON.parse(usersJSON);
+// }
+// console.log(userId);
+// console.log(user);
+
+// const userToken = localStorage.getItem("user-token");
+const userToken = localStorage.getItem("user-token");
+const user = users.find((user) => user.token === userToken);
 if (user === undefined) {
   location.assign("../../#");
 }
-if (usersJSON !== null) {
-  JSON.parse(usersJSON);
-}
-console.log(userId);
-console.log(user);
 
+console.log(userToken);
+console.log(user);
 // change title inside app
 document.querySelector(".username").textContent = `${user.username}`;
 // change title in head

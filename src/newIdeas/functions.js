@@ -1,7 +1,7 @@
 // const bookmarkEl = document.querySelector(".bookmark-active");
 // get saved users
 const getSavedUsers = () => {
-  const userJson = localStorage.getItem("users");
+  const userJson = localStorage.getItem("advice-users");
   if (userJson !== null) {
     return JSON.parse(userJson);
   } else {

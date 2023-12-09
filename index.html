@@ -131,10 +131,10 @@
 
     <!--################## popup  ################### -->
     <!-- <div class="pop-up hidden"> -->
-    <!-- <div class="pop-up text-center font-Manrope hidden"> -->
-    <div
-      class="pop-up text-center font-Manrope grid justify-items-center items-center justify-center h-[45vh]"
-    >
+    <div class="pop-up text-center font-Manrope hidden">
+      <!-- <div
+      class="pop-up  text-center font-Manrope grid justify-items-center items-center justify-center h-[45vh]"
+    > -->
       <!-- loading -->
       <!-- <div
       class="pop-up text-center text-D_gray-Ligth_cyan font-Manrope h-[80vh] grid justify-items-center items-center"
@@ -168,7 +168,7 @@
               <!-- ^ username error message -->
               <span
                 id="username"
-                class="hidden text-yellow-500 font-sans font-semibold"
+                class="text-yellow-500 font-sans font-semibold"
               ></span>
               <input
                 name="password"
@@ -179,7 +179,7 @@
               <!-- ^ password error message -->
               <span
                 id="password"
-                class="hidden text-yellow-500 font-sans font-semibold"
+                class="text-yellow-500 font-sans font-semibold"
               ></span>
 
               <p class="text-yellow-500 font-bold hidden user-not-exist">
@@ -240,58 +240,71 @@
             <!-- <form class="sign-form flex items-center flex-col space-y-7"> -->
             <form class="signup-form flex items-center flex-col space-y-7">
               <!-- vvvvvvvv create new account input -->
+              <!-- username -->
               <input
                 name="fullName"
                 type="text"
                 placeholder="Names"
-                required
                 class="signup-input w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
               />
               <!-- ^ name error message -->
               <span
                 id="fullName"
-                class="hidden text-yellow-500 font-sans font-semibold"
+                class="text-yellow-500 font-sans font-semibold"
               ></span>
               <input
                 name="email"
                 type="email"
                 placeholder="Email"
-                required
                 class="signup-input w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
               />
               <!-- ^ email error message -->
               <span
                 id="email"
-                class="hidden text-yellow-500 font-sans font-semibold"
+                class="text-yellow-500 font-sans font-semibold"
               ></span>
               <!-- ^^^^^^^^^^^^ -->
               <input
                 name="username"
                 type="text"
                 placeholder="Username"
-                required
                 class="username block w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-Grayish_blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-Grayish_blue sm:text-sm sm:leading-6"
               />
               <!-- ^ username error message -->
+              <!-- id="username" -->
               <span
-                id="username"
-                class="hidden text-yellow-500 font-sans font-semibold"
+                id="signup-username"
+                class="text-yellow-500 font-sans font-semibold"
               ></span>
+              <!-- confirm password -->
+
               <input
                 name="password"
                 type="password"
                 placeholder="Password"
-                required
                 class="password block w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-DEFAUT_Dark_Blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-DEFAUT_Dark_Blue sm:text-sm sm:leading-6"
               />
               <!-- ^ password error message -->
               <span
-                id="password"
-                class="hidden text-yellow-500 font-sans font-semibold"
+                id="signup-password"
+                class="text-yellow-500 font-sans font-semibold"
               ></span>
 
+              <input
+                name="confirmPassword"
+                type="password"
+                placeholder="Confirm Password"
+                class="password block w-64 rounded-md border-0 py-1.5 text-gray-600 shadow-sm ring-0 ring-inset ring-D_gray-DEFAUT_Dark_Blue placeholder:text-gray-400 placeholder:text-center focus:ring-2 focus:ring-inset focus:ring-D_gray-DEFAUT_Dark_Blue sm:text-sm sm:leading-6"
+              />
+              <!-- ^ password error message -->
               <span
-                class="taken hidden text-yellow-500 font-sans font-semibold"
+                id="confirm-password"
+                class="text-yellow-500 font-sans font-semibold"
+              >
+              </span>
+
+              <span
+                class="taken text-yellow-500 font-sans hidden font-semibold"
               ></span>
               <button
                 class="py-2 px-7 mt-8 text-D_gray-DEFAUT_Dark_Blue bg-D_gray-Neon_green rounded hover:glow-btn sign-btn"
