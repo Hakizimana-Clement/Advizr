@@ -1,47 +1,40 @@
 const adviceContainer = document.querySelector(".last-container");
-import { getFilters } from "./filters";
 import { getAdvice, removeAdvice } from "./advices";
-// import { randomByKeys } from "../new-journal/random-advice";
-
-// // ############### API REQUEST #####################
-// const adviceAPI = () => {
-//   apiRequest()
-//     .then((advice) => {
-//       document.querySelector("#advice-data").textContent = advice.id;
-//       document.querySelector("#advice").textContent = advice.advice;
-//       // adviceId.textContent = advice.id;
-//       // adviceText.textContent = advice.advice;
-//       // console.log(advice);
-//       console.log(advice);
-//     })
-//     .catch((err) => {
-//       // return (adviceText.textContent = err);
-//       document.querySelector("#advice").textContent = err;
-//       console.log(err);
-//     });
-// };
-// adviceAPI();
+const userToken = localStorage.getItem("user-token");
 
 // render advice
 const renderAdvices = () => {
-  const filters = getFilters();
-  // console.log(getAdvice());
-  const filterAdvices = getAdvice().filter((advice) => {
-    console.log(advice);
-    const matched = advice.adviceText
-      .toLowerCase()
-      .includes(filters.searchText.toLowerCase());
-    const hidebooked = !advice.checked || !filters.hideChecked;
-    return hidebooked && matched;
-  });
-
   adviceContainer.innerHTML = "";
 
-  filterAdvices.forEach((advice) => {
-    // console.log(advice);
-    adviceContainer.append(genereateDOM(advice));
+  getAdvice().forEach((advice) => {
+    if (advice.token === userToken) {
+      adviceContainer.append(genereateDOM(advice));
+    }
   });
 };
+// // render advice
+// const renderAdvices = () => {
+//   const filters = getFilters();
+//   // console.log(getAdvice());
+//   // const filterAdvices = getAdvice().filter((advice) => {
+//   const filterAdvices = user.filter((advice) => {
+//     console.log(advice.token);
+//     // const thisUser = users.filter((user) => user.id === advice.token);
+//     // console.log(thisUser.token);
+//     // if()
+//     // const matched = advice.adviceText
+//     //   .toLowerCase()
+//     //   .includes(filters.searchText.toLowerCase());
+//     // const hidebooked = !advice.checked || !filters.hideChecked;
+//     // return hidebooked && matched;
+//   });
+
+// adviceContainer.innerHTML = "";
+
+// filterAdvices.forEach((advice) => {
+//   adviceContainer.append(genereateDOM(advice));
+// });
+// };
 
 const genereateDOM = (advice) => {
   const pEl = document.createElement("h1");
