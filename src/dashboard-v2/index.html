@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../../styles/style.css" />
+  </head>
+  <body class="bg-D_gray-DEFAUT_Dark_Blue font-Manrope">
+    <header>
+      <nav class="flex justify-between items-end">
+        <!-- menu icon -->
+        <button class="ml-2 cursor-pointer menu-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="white"
+            class="w-8 h-8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+            />
+          </svg>
+        </button>
+
+        <!-- logout icon -->
+        <div class="flex justify-end mt-4">
+          <!-- <a href="src/login/index.html" class="mr-2 hover:login-btn"> -->
+          <button class="mr-2 logout-btn">
+            <a
+              class="ml-2 cursor-pointer menu-icon py-1 px-5 inline-block text-D_gray-Ligth_cyan font-semibold bg-violet-600 rounded-2xl hover:bg-violet-700 mr-2"
+            >
+              logout
+            </a>
+          </button>
+          <!-- </a> -->
+        </div>
+      </nav>
+    </header>
+    <!-- ########### NAVBAR ##########   -->
+    <!-- <div class="bg-red-100 h-screen"> -->
+    <div class="navbar-open hidden h-screen place-items-center">
+      <div>
+        <ul class="text-D_gray-Ligth_cyan text-center">
+          <li
+            class="py-4 text-yellow-300 font-bold hover:cursor-pointer hover:text-yellow-500"
+          >
+            <a class="test saved-advice">
+              &#9830; Discover your personalized advice
+            </a>
+          </li>
+          <li class="">
+            <a
+              class="test new-advice text-green-400 font-bold hover:cursor-pointer hover:text-green-600"
+              >&#9830; Learn something new today
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- js -->
+    <script type="module" src="./dashboard-v2.js"></script>
+  </body>
+</html>

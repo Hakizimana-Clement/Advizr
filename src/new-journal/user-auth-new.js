@@ -14,7 +14,7 @@ const userAuth = (userData) => {
     // redirect to other page
     localStorage.setItem("user-token", userFound.id);
     location.assign(`/src/dashboard/index.html`);
-    // location.assign(`/src/dashboard/index.html#${userFound.id}`);
+    // location.assign(`/src/dashboard-v2/index.html`);
   }
 };
 

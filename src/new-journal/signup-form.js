@@ -161,8 +161,19 @@ const signupForm = () => {
     localStorage.setItem("signup-token", token);
     // redirect to other login page
     location.assign(`/src/dashboard/index.html`);
+    // location.assign(`/src/dashboard-v2/index.html`);
     signupFormEl.reset();
     // location.assign(`/src/dashboard/index.html#${id}`);
   });
 };
-export { signupBtn, signupForm };
+
+const loginRedirectBtnEl = document.querySelector(".redirect-to-login");
+const loginRedirectBtn = () => {
+  loginRedirectBtnEl.addEventListener("click", () => {
+    console.log("clicked");
+    document.querySelector(".no").classList.remove("showNo");
+    document.querySelector(".yes").classList.add("yesShow");
+  });
+};
+
+export { signupBtn, signupForm, loginRedirectBtn };

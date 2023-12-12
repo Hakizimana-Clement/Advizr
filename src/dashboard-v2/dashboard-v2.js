@@ -1,30 +1,6 @@
-import renderAdvices from "./renderAdvices";
-renderAdvices();
-// #################################################################
-// 1. filter
-// import { getFilters, setFilters } from "./filters";
-// console.log(getFilters());
-// setFilters({ viewed: true });
-// console.log(getFilters());
-// // 2. advice
-import {
-  getAdvice,
-  createAdvice,
-  removeAdvice as removeOneAdvice,
-  toggleAdvice,
-} from "./advices";
-
-// console.log(getAdvice());
-// toggleAdvice("6fe9ba7a-0be2-4867-93cf-958aa21a6089");
-// createAdvice(1, "Never lie someone in your life");
-// console.log(getAdvice());
-
-// 3.views
-
-// #################################################################
-
 // select html element
 const logoutBtn = document.querySelector(".logout-btn");
+
 // id and parapah
 // start
 const adviceId = document.querySelector("#advice-num");
@@ -71,7 +47,7 @@ if (user === undefined) {
 console.log(userToken);
 console.log(user);
 // change title inside app
-document.querySelector(".username").textContent = `${user.username}`;
+// document.querySelector(".username").textContent = `${user.username}`;
 // change title in head
 document.title = ` Advizr App - ${user.username}`;
 
@@ -81,9 +57,7 @@ document.title = ` Advizr App - ${user.username}`;
 //################# LOGOUT #################
 logoutBtn.addEventListener("click", () => {
   console.log("logout clicked");
-  // remove token in localstorage
-  // localStorage.removeItem("user-token");
-  location.assign("../../#");
+  // location.assign("../../#");
 });
 
 //################# NAVBAR #################
@@ -237,16 +211,14 @@ const removeAdvice = (id) => {
 const adviceAPI = () => {
   apiRequest()
     .then((advice) => {
-      // document.querySelector("#advice-num").textContent = "test";
-      // document.querySelector("#advice-data").innerHTML = "hello";
-
+      document.querySelector("#advice-num").textContent = "test";
       adviceId.textContent = advice.id;
       adviceText.textContent = advice.advice;
       console.log(advice);
     })
     .catch((err) => {
-      // return (adviceText.textContent = err);
-      console.log(err);
+      return (adviceText.textContent = err);
+      // console.log(err)
     });
 };
 adviceAPI();

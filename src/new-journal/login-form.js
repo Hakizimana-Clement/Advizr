@@ -71,4 +71,23 @@ const loginForm = () => {
   });
 };
 
-export { loginBtn, loginForm };
+// ########## FORGET PASSWORD ###############
+const forgetBtnEl = document.querySelector(".forget-password");
+const forgetRedirectBtn = () => {
+  forgetBtnEl.addEventListener("click", () => {
+    console.log("clicked");
+    document.querySelector(".yes").classList.remove("yesShow");
+    document.querySelector(".forget-form").classList.add("showNo");
+  });
+};
+
+const redirectToLoginBtn = document.querySelector(".forget-redirect-login");
+
+// ########## REDIRECT TO LOGIN ###############
+const redirectToLogin = () => {
+  redirectToLoginBtn.addEventListener("click", () => {
+    console.log("back home");
+  });
+};
+
+export { loginBtn, loginForm, forgetRedirectBtn, redirectToLogin };
