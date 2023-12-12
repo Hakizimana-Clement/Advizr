@@ -119,8 +119,9 @@ const signupForm = () => {
       username: e.target.elements.username.value,
       password: e.target.elements.password.value,
       confirmPassword: e.target.elements.confirmPassword.value,
-      adviceId: null,
-      adviceText: null,
+      adviceId: "",
+      adviceText: "",
+      checked: false,
     };
 
     // checking the existing users before create new one

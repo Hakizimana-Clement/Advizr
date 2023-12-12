@@ -3,17 +3,8 @@
 import { getSavedUsers } from "../newIdeas/functions";
 import { randomByKeys } from "../new-journal/random-advice";
 import { renderAdvices } from "./renderAdvices";
-// import { setFilters } from "./filters";
-import {
-  createAdvice,
-  getAdvice,
-  removeAdvice,
-  saveAdvices,
-  toggleAdvice,
-  toggleChecked,
-  getSavedAdvices,
-  isBookmardChecked,
-} from "./advices";
+import { toggleAdvice, isBookmardChecked } from "./advices";
+
 // ########## User Validation ##########
 const userToken = localStorage.getItem("user-token");
 const users = getSavedUsers();
@@ -28,7 +19,7 @@ const logoutBtn = document.querySelector(".logout-btn");
 logoutBtn.addEventListener("click", () => {
   console.log("logout clicked");
   // remove token in localstorage
-  // localStorage.removeItem("user-token");
+  localStorage.removeItem("user-token");
   location.assign("../../#");
 });
 
@@ -48,9 +39,9 @@ const adviceAPI = () => {
       adviceId.textContent = advice.id;
       adviceText.textContent = advice.advice;
       const adviceIdNumber = advice.id;
-      console.log(adviceIdNumber);
+      // console.log(adviceIdNumber);
       isBookmardChecked(adviceIdNumber);
-      bookmarkColorToggle.classList.remove("toggle-bookmark"); // add hover active color on bookmark icon
+      // bookmarkColorToggle.classList.remove("toggle-bookmark"); // add hover active color on bookmark icon
     })
     .catch((err) => {
       console.log(err);
@@ -83,9 +74,8 @@ boomarkBtn.addEventListener("click", () => {
   ) {
     console.log("Failed to fetch data, please wait");
   } else {
-    toggleAdvice(adviceIdToSave, adviceTextToSave, state);
+    toggleAdvice(adviceIdToSave, adviceTextToSave, state, userToken);
     renderAdvices();
-    // }
   }
 });
 
@@ -93,9 +83,7 @@ boomarkBtn.addEventListener("click", () => {
 const bookmarkShadow = document.querySelector(".bookmark-shadow");
 bookmarkColorToggle.addEventListener("click", () => {
   bookmarkColorToggle.classList.toggle("toggle-bookmark");
-  if (bookmarkShadow) {
-    bookmarkShadow.classList.remove("bookmark-shadow");
-  }
+  bookmarkShadow.classList.remove("bookmark-shadow");
 });
 
 //################# NAVBAR #################
@@ -113,7 +101,6 @@ menuIcon.addEventListener("click", () => {
     openAndCloseNavBar.style.display = "none";
     document.body.style.overflowY = "auto";
   }
-  // console.log(isNavbarOpen);
 });
 
 // mine
@@ -138,27 +125,3 @@ document.querySelector(".new-advice ").addEventListener("click", () => {
   document.querySelector(".advice-container").style.display = "relative";
   document.querySelector(".main-container ").style.display = "none";
 });
-
-// trailer
-// const links = document.querySelectorAll(".link");
-// links.forEach((link) => {
-//   link.addEventListener("click", () => {
-//     //   // console.log("clicked", link);
-//     isNavbarOpen = false;
-//     openAndCloseNavBar.style.display = "none";
-//     document.body.style.overflowY = "auto";
-//     if (link.classList.contains("new-advice")) {
-//       console.log("yes");
-//       // document.querySelector(".main-container").style.display = "hidden";
-//       // document.querySelector(".new-advice").style.display = "block";
-//       // document.querySelector(".menu").classList.toggle("block");
-//     } else {
-//       console.log("no");
-//       document.querySelector(".main-container").style.display = "grid";
-//       document.querySelector(".menu").classList.toggle("hidden");
-//       // document.querySelector(".menu").style.display = "hidden";
-//     }
-//     //   document.querySelector(".main-container").style.display = "grid";
-//     //   document.querySelector(".new-advice").style.display = "block";
-//   });
-// });

@@ -25,9 +25,9 @@ import { getAdvice, removeAdvice } from "./advices";
 // render advice
 const renderAdvices = () => {
   const filters = getFilters();
-  console.log(getAdvice());
+  // console.log(getAdvice());
   const filterAdvices = getAdvice().filter((advice) => {
-    // console.log();
+    console.log(advice);
     const matched = advice.adviceText
       .toLowerCase()
       .includes(filters.searchText.toLowerCase());

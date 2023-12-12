@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 let advices = [];
-
 // get saved advices
 const getSavedAdvices = () => {
-  // const advicesJSON = localStorage.getItem("advice-users");
-  const advicesJSON = localStorage.getItem("adviceData");
+  const advicesJSON = localStorage.getItem("advice-users");
+  // const advicesJSON = localStorage.getItem("adviceData");
+  // const advicesJSON = localStorage.getItem("adviceData");
   try {
     advices = advicesJSON ? JSON.parse(advicesJSON) : [];
   } catch (error) {
@@ -14,7 +14,8 @@ const getSavedAdvices = () => {
 
 // save advice
 const saveAdvices = () => {
-  localStorage.setItem("adviceData", JSON.stringify(advices));
+  localStorage.setItem("advice-users", JSON.stringify(advices));
+  // localStorage.setItem("adviceData", JSON.stringify(advices));
 };
 
 // get all advice from array
@@ -22,11 +23,11 @@ const getAdvice = () => advices;
 
 // create Advice
 const createAdvice = (adviceId, adviceText, isSaved) => {
-  const id = uuidv4();
-  const token = localStorage.getItem("user-token");
+  // const id = uuidv4();
+  // const token = localStorage.getItem("user-token");
   if (typeof isSaved === "boolean") {
-    advices.push({ id, token, adviceId, adviceText, checked: isSaved });
-    // advices.push({ token, adviceId, adviceText, checked: false });
+    // advices.push({ id, token, adviceId, adviceText, checked: isSaved });
+    advices.push({ ...adviceId, adviceText, checked: isSaved });
     saveAdvices();
   }
 };
@@ -41,12 +42,13 @@ const removeAdvice = (id) => {
 };
 
 // toggle advice
-const toggleAdvice = (adviceId, adviceText, state) => {
+const toggleAdvice = (adviceId, adviceText, state, token) => {
   state = !state;
-  console.log(state);
+  console.log(adviceId, adviceText, state, token);
+
   const advices = getAdvice();
   const adviceToRemove = advices.findIndex(
-    (advice) => advice.adviceId === adviceId
+    (advice) => advice.adviceId === adviceId && advice.id === token
   );
   if (adviceToRemove !== -1) {
     advices.splice(adviceToRemove, 1);
@@ -56,14 +58,29 @@ const toggleAdvice = (adviceId, adviceText, state) => {
   }
 };
 
+// // toggle advice
+// const toggleAdvice = (adviceId, adviceText, state, token) => {
+//   state = !state;
+//   console.log(state);
+//   const advices = getAdvice();
+//   const adviceToRemove = advices.findIndex(
+//     (advice) => advice.adviceId === adviceId && advice.id === token
+//   );
+//   if (adviceToRemove !== -1) {
+//     advices.splice(adviceToRemove, 1);
+//     saveAdvices();
+//   } else {
+//     createAdvice(adviceId, adviceText, state);
+//   }
+// };
+
 // ############ TOGGLE BOOKMARK ACCORDING TO API ##########
 const bookmarkColorToggle = document.querySelector(".bookmark-icon");
 const isBookmardChecked = (adviceIdNumber) => {
-  // const isSaved = getAdvice().find((advice) => advice.adviceId === "133");
+  // const isSaved = getAdvice().find((advice) => advice.adviceId === "203");
   const isSaved = getAdvice().find(
     (advice) => advice.adviceId === adviceIdNumber
   );
-  console.log(isSaved);
   if (isSaved !== undefined) {
     if (isSaved.checked === true) {
       console.log("i have it");
