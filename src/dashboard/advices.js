@@ -39,17 +39,28 @@ const removeAdvice = (id) => {
 };
 
 // toggle advice
-const toggleAdvice = (id) => {
-  console.log(id);
-
-  const advice = advices.find((advice) => advice.id === id);
-  if (advice !== undefined) {
-    advice.checked = !advice.checked;
-
+const toggleAdvice = (adviceId, adviceText) => {
+  console.log("working");
+  const advices = getAdvice();
+  const adviceToRemove = advices.findIndex(
+    (advice) => advice.adviceId === adviceId
+  );
+  if (adviceToRemove !== -1) {
+    advices.splice(adviceToRemove, 1);
     saveAdvices();
+  } else {
+    createAdvice(adviceId, adviceText);
   }
+
+  // console.log(id);
+  // const advice = advices.find((advice) => advice.id === id);
+  // if (advice !== undefined) {
+  //   advice.checked = !advice.checked;
+
+  //   saveAdvices();
+  // }
 };
 
 getSavedAdvices();
 
-export { toggleAdvice, createAdvice, removeAdvice, getAdvice };
+export { toggleAdvice, createAdvice, removeAdvice, getAdvice, saveAdvices };

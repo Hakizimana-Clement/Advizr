@@ -51,29 +51,19 @@ randomBtn.addEventListener("click", () => {
 
 //################# ALL FUNCTION #################
 // import { setFilters } from "./filters";
-import { createAdvice } from "./advices";
+import {
+  createAdvice,
+  getAdvice,
+  removeAdvice,
+  saveAdvices,
+  toggleAdvice,
+} from "./advices";
 import { renderAdvices } from "./renderAdvices";
 
 // render all saved advice
 renderAdvices();
 
-// bookmark icon
-const boomarkBtn = document.querySelector(".bookmark-active");
-boomarkBtn.addEventListener("click", () => {
-  const adviceIdToSave = document.querySelector("#advice-num").textContent;
-  const adviceTextToSave = document.querySelector("#advice").textContent;
-  console.log("clicked");
-  console.log(adviceIdToSave, adviceTextToSave);
-  if (
-    adviceIdToSave === " " ||
-    adviceTextToSave === "TypeError: Failed to fetch"
-  ) {
-    console.log("Failed to fetch data, please wait");
-  } else {
-    createAdvice(adviceIdToSave, adviceTextToSave);
-    renderAdvices();
-  }
-});
+// // bookmark icon
 // const boomarkBtn = document.querySelector(".bookmark-active");
 // boomarkBtn.addEventListener("click", () => {
 //   const adviceIdToSave = document.querySelector("#advice-num").textContent;
@@ -86,34 +76,45 @@ boomarkBtn.addEventListener("click", () => {
 //   ) {
 //     console.log("Failed to fetch data, please wait");
 //   } else {
-//     // toggleAdvice(adviceIdToSave, adviceTextToSave);
 //     createAdvice(adviceIdToSave, adviceTextToSave);
 //     renderAdvices();
 //   }
 // });
+const boomarkBtn = document.querySelector(".bookmark-active");
+boomarkBtn.addEventListener("click", () => {
+  const adviceIdToSave = document.querySelector("#advice-num").textContent;
+  const adviceTextToSave = document.querySelector("#advice").textContent;
+  console.log("clicked");
+  console.log(adviceIdToSave, adviceTextToSave);
+  if (
+    adviceIdToSave === " " ||
+    adviceTextToSave === "TypeError: Failed to fetch"
+  ) {
+    console.log("Failed to fetch data, please wait");
+  } else {
+    toggleAdvice(adviceIdToSave, adviceTextToSave);
+    renderAdvices();
+  }
+});
 
 // const toggleAdvice = (adviceId, adviceText) => {
 //   console.log("working");
-//   console.log(adviceId, adviceText);
-//   // const existingAdviceIndex = getAdvice().findIndex(
-//   //   (advice) => advice.adviceId === adviceId
-//   // );
-
-//   // if (existingAdviceIndex !== -1) {
-//   //   // Remove advice if already exists
-//   //   advices.splice(existingAdviceIndex, 1);
-//   // } else {
-//   //   // Add advice if not exists
-//   //   createAdvice(adviceId, adviceText);
-//   // }
-
-//   createAdvice(adviceId, adviceText);
-//   // createAdvice();
-// };
+//   const advices = getAdvice();
+//   console.log(advices);
+//   const adviceToRemove = advices.findIndex(
+//     (advice) => advice.adviceId === adviceId
+//   );
+//   if (adviceToRemove !== -1) {
+//     advices.splice(adviceToRemove, 1);
+//     saveAdvices();
+//   } else {
+//     createAdvice(adviceId, adviceText);
+//   }
+// }
 //################# TOGGLE ICON COLOR ON BOOKMARK ICON #################
 const bookmarkColorToggle = document.querySelector(".bookmark-icon");
 let isOpen = false;
 bookmarkColorToggle.addEventListener("click", () => {
   isOpen = bookmarkColorToggle.classList.toggle("toggle-bookmark");
-  bookmark.classList.remove("bookmark-shadow");
+  // bookmark.classList.remove("bookmark-shadow");
 });
