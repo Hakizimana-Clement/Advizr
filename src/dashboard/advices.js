@@ -42,7 +42,6 @@ const removeAdvice = (id) => {
 
 // toggle advice
 const toggleAdvice = (adviceId, adviceText, state) => {
-  // console.log("working");
   state = !state;
   console.log(state);
   const advices = getAdvice();
@@ -51,10 +50,8 @@ const toggleAdvice = (adviceId, adviceText, state) => {
   );
   if (adviceToRemove !== -1) {
     advices.splice(adviceToRemove, 1);
-    // console.log((state.checked = !state.checked));
     saveAdvices();
   } else {
-    // state.checked = !state.checked;
     createAdvice(adviceId, adviceText, state);
   }
 };
@@ -62,10 +59,11 @@ const toggleAdvice = (adviceId, adviceText, state) => {
 // ############ TOGGLE BOOKMARK ACCORDING TO API ##########
 const bookmarkColorToggle = document.querySelector(".bookmark-icon");
 const isBookmardChecked = (adviceIdNumber) => {
-  const isSaved = getAdvice().find((advice) => advice.adviceId === "213");
-  // const isSaved = getAdvice().find(
-  //   (advice) => advice.adviceId === adviceIdNumber
-  // );
+  // const isSaved = getAdvice().find((advice) => advice.adviceId === "133");
+  const isSaved = getAdvice().find(
+    (advice) => advice.adviceId === adviceIdNumber
+  );
+  console.log(isSaved);
   if (isSaved !== undefined) {
     if (isSaved.checked === true) {
       console.log("i have it");

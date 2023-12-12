@@ -47,23 +47,15 @@ const adviceAPI = () => {
     .then((advice) => {
       adviceId.textContent = advice.id;
       adviceText.textContent = advice.advice;
-      bookmarkColorToggle.classList.remove("toggle-bookmark"); // add hover active color on bookmark icon
       const adviceIdNumber = advice.id;
+      console.log(adviceIdNumber);
       isBookmardChecked(adviceIdNumber);
-      // const isSaved = getAdvice().find((advice) => advice.adviceId === "213");
-      // if (isSaved !== undefined) {
-      //   if (isSaved.checked === true) {
-      //     console.log("i have it");
-      //     bookmarkColorToggle.classList.add("advice-found"); // add hover active color on bookmark icon
-      //   } else {
-      //     console.log("noo");
-      //     bookmarkColorToggle.classList.remove("toggle-bookmark"); // add hover active color on bookmark icon
-      //   }
-      // }
+      bookmarkColorToggle.classList.remove("toggle-bookmark"); // add hover active color on bookmark icon
     })
     .catch((err) => {
       console.log(err);
-      return (adviceText.textContent = err);
+      return (adviceText.textContent = "Error occur");
+      // return (adviceText.textContent = err);
       // return (adviceText.textContent = "loading..........⏳");
     });
 };
@@ -94,9 +86,13 @@ boomarkBtn.addEventListener("click", () => {
   ) {
     console.log("Failed to fetch data, please wait");
   } else {
+    // const check = getAdvice().find(
+    //   (advice) => advice.adviceId !== adviceIdToSave
+    // );
+    // if (check !== undefined && check.adviceId !== adviceIdToSave) {
     toggleAdvice(adviceIdToSave, adviceTextToSave, state);
     renderAdvices();
-    // toggleChecked(userToken);
+    // }
   }
 });
 
