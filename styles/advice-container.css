@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  .advice-found {
+    fill: #52ffa8;
+    filter: drop-shadow(0 0 2px #52ffa8) !important;
+  }
   .toggle-bookmark {
     fill: #52ffa8;
     filter: drop-shadow(0 0 2px #52ffa8) !important;

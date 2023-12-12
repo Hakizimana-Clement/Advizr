@@ -157,8 +157,8 @@ const signupForm = () => {
     }
     console.log(signupData);
     users.push(signupData);
-    // localStorage.setItem("advice-users", JSON.stringify(users));
-    localStorage.setItem("signup-token", token);
+    // localStorage.setItem("signup-token", token);
+    localStorage.setItem("user-token", token);
     // redirect to other login page
     location.assign(`/src/dashboard/index.html`);
     // location.assign(`/src/dashboard-v2/index.html`);

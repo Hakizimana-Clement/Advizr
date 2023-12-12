@@ -1,5 +1,20 @@
-// ########## User validation ##########
+//################# ALL FUNCTION #################
+// ########## IMPORTS ##########
 import { getSavedUsers } from "../newIdeas/functions";
+import { randomByKeys } from "../new-journal/random-advice";
+import { renderAdvices } from "./renderAdvices";
+// import { setFilters } from "./filters";
+import {
+  createAdvice,
+  getAdvice,
+  removeAdvice,
+  saveAdvices,
+  toggleAdvice,
+  toggleChecked,
+  getSavedAdvices,
+  isBookmardChecked,
+} from "./advices";
+// ########## User Validation ##########
 const userToken = localStorage.getItem("user-token");
 const users = getSavedUsers();
 const user = users.find((userId) => userId.id === userToken);
@@ -24,19 +39,32 @@ document.querySelector(".username").textContent = `${user.username}`;
 document.title = ` Advizr App - ${user.username}`;
 
 // ############### API REQUEST && RENDERING && RUN IT #####################
-import { randomByKeys } from "../new-journal/random-advice";
 const adviceId = document.querySelector("#advice-num");
 const adviceText = document.querySelector("#advice");
+const bookmarkColorToggle = document.querySelector(".bookmark-icon");
 const adviceAPI = () => {
   apiRequest()
     .then((advice) => {
       adviceId.textContent = advice.id;
       adviceText.textContent = advice.advice;
-      console.log(advice);
+      bookmarkColorToggle.classList.remove("toggle-bookmark"); // add hover active color on bookmark icon
+      const adviceIdNumber = advice.id;
+      isBookmardChecked(adviceIdNumber);
+      // const isSaved = getAdvice().find((advice) => advice.adviceId === "213");
+      // if (isSaved !== undefined) {
+      //   if (isSaved.checked === true) {
+      //     console.log("i have it");
+      //     bookmarkColorToggle.classList.add("advice-found"); // add hover active color on bookmark icon
+      //   } else {
+      //     console.log("noo");
+      //     bookmarkColorToggle.classList.remove("toggle-bookmark"); // add hover active color on bookmark icon
+      //   }
+      // }
     })
     .catch((err) => {
       console.log(err);
       return (adviceText.textContent = err);
+      // return (adviceText.textContent = "loading..........⏳");
     });
 };
 // call api after login
@@ -49,72 +77,34 @@ randomBtn.addEventListener("click", () => {
   randomByKeys(); // request useing keypress
 });
 
-//################# ALL FUNCTION #################
-// import { setFilters } from "./filters";
-import {
-  createAdvice,
-  getAdvice,
-  removeAdvice,
-  saveAdvices,
-  toggleAdvice,
-} from "./advices";
-import { renderAdvices } from "./renderAdvices";
-
 // render all saved advice
 renderAdvices();
 
-// // bookmark icon
-// const boomarkBtn = document.querySelector(".bookmark-active");
-// boomarkBtn.addEventListener("click", () => {
-//   const adviceIdToSave = document.querySelector("#advice-num").textContent;
-//   const adviceTextToSave = document.querySelector("#advice").textContent;
-//   console.log("clicked");
-//   console.log(adviceIdToSave, adviceTextToSave);
-//   if (
-//     adviceIdToSave === " " ||
-//     adviceTextToSave === "TypeError: Failed to fetch"
-//   ) {
-//     console.log("Failed to fetch data, please wait");
-//   } else {
-//     createAdvice(adviceIdToSave, adviceTextToSave);
-//     renderAdvices();
-//   }
-// });
 const boomarkBtn = document.querySelector(".bookmark-active");
 boomarkBtn.addEventListener("click", () => {
   const adviceIdToSave = document.querySelector("#advice-num").textContent;
   const adviceTextToSave = document.querySelector("#advice").textContent;
+  const state = false;
   console.log("clicked");
-  console.log(adviceIdToSave, adviceTextToSave);
+  // console.log(adviceIdToSave, adviceTextToSave);
   if (
     adviceIdToSave === " " ||
-    adviceTextToSave === "TypeError: Failed to fetch"
+    adviceTextToSave === "TypeError: Failed to fetch" ||
+    adviceTextToSave === "Loading...... ⏳"
   ) {
     console.log("Failed to fetch data, please wait");
   } else {
-    toggleAdvice(adviceIdToSave, adviceTextToSave);
+    toggleAdvice(adviceIdToSave, adviceTextToSave, state);
     renderAdvices();
+    // toggleChecked(userToken);
   }
 });
 
-// const toggleAdvice = (adviceId, adviceText) => {
-//   console.log("working");
-//   const advices = getAdvice();
-//   console.log(advices);
-//   const adviceToRemove = advices.findIndex(
-//     (advice) => advice.adviceId === adviceId
-//   );
-//   if (adviceToRemove !== -1) {
-//     advices.splice(adviceToRemove, 1);
-//     saveAdvices();
-//   } else {
-//     createAdvice(adviceId, adviceText);
-//   }
-// }
 //################# TOGGLE ICON COLOR ON BOOKMARK ICON #################
-const bookmarkColorToggle = document.querySelector(".bookmark-icon");
-let isOpen = false;
+const bookmarkShadow = document.querySelector(".bookmark-shadow");
 bookmarkColorToggle.addEventListener("click", () => {
-  isOpen = bookmarkColorToggle.classList.toggle("toggle-bookmark");
-  // bookmark.classList.remove("bookmark-shadow");
+  bookmarkColorToggle.classList.toggle("toggle-bookmark");
+  if (bookmarkShadow) {
+    bookmarkShadow.classList.remove("bookmark-shadow");
+  }
 });

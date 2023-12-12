@@ -21,12 +21,14 @@ const saveAdvices = () => {
 const getAdvice = () => advices;
 
 // create Advice
-const createAdvice = (adviceId, adviceText) => {
+const createAdvice = (adviceId, adviceText, isSaved) => {
   const id = uuidv4();
   const token = localStorage.getItem("user-token");
-  advices.push({ id, token, adviceId, adviceText, checked: false });
-  // advices.push({ token, adviceId, adviceText, checked: false });
-  saveAdvices();
+  if (typeof isSaved === "boolean") {
+    advices.push({ id, token, adviceId, adviceText, checked: isSaved });
+    // advices.push({ token, adviceId, adviceText, checked: false });
+    saveAdvices();
+  }
 };
 
 // remove advice
@@ -39,28 +41,92 @@ const removeAdvice = (id) => {
 };
 
 // toggle advice
-const toggleAdvice = (adviceId, adviceText) => {
-  console.log("working");
+const toggleAdvice = (adviceId, adviceText, state) => {
+  // console.log("working");
+  state = !state;
+  console.log(state);
   const advices = getAdvice();
   const adviceToRemove = advices.findIndex(
     (advice) => advice.adviceId === adviceId
   );
   if (adviceToRemove !== -1) {
     advices.splice(adviceToRemove, 1);
+    // console.log((state.checked = !state.checked));
     saveAdvices();
   } else {
-    createAdvice(adviceId, adviceText);
+    // state.checked = !state.checked;
+    createAdvice(adviceId, adviceText, state);
   }
+};
 
-  // console.log(id);
-  // const advice = advices.find((advice) => advice.id === id);
-  // if (advice !== undefined) {
-  //   advice.checked = !advice.checked;
+// ############ TOGGLE BOOKMARK ACCORDING TO API ##########
+const bookmarkColorToggle = document.querySelector(".bookmark-icon");
+const isBookmardChecked = (adviceIdNumber) => {
+  const isSaved = getAdvice().find((advice) => advice.adviceId === "213");
+  // const isSaved = getAdvice().find(
+  //   (advice) => advice.adviceId === adviceIdNumber
+  // );
+  if (isSaved !== undefined) {
+    if (isSaved.checked === true) {
+      console.log("i have it");
+      bookmarkColorToggle.classList.add("advice-found"); // add hover active color on bookmark icon
+    } else {
+      console.log("noo");
+      bookmarkColorToggle.classList.remove("toggle-bookmark"); // add hover active color on bookmark icon
+    }
+  }
+};
+// ############ TOGGLE bookmark according to api ##########
+// const bookmarkColorToggle = document.querySelector(".bookmark-icon");
+// const isBookmarked = (adviceId) => {
+//   console.log(adviceId);
+//   const thisTime = getAdvice().find((advice) => advice.adviceId === adviceId);
+//   if (thisTime !== undefined) {
+//     console.log(thisTime);
+//     bookmarkColorToggle.classList.add("advice-found"); // add hover active color on bookmark icon
+//   } else {
+//     bookmarkColorToggle.classList.remove("toggle-bookmark"); // remove hover active color on bookmark icon
+//   }
+// };
+// ############ TOGGLE checked ##########
+// import { getSavedUsers } from "../newIdeas/functions";
+// const allUser = getSavedUsers();
+// console.log(allUser);
+// const toggleChecked = (id, checked) => {
+// const toggleChecked = (id, checked) => {
+const toggleChecked = (id) => {
+  console.log(id);
+  // console.log(checked);
+  const isChecked = advices.find((advice) => advice.token === id);
 
-  //   saveAdvices();
+  // if (isChecked !== undefined) {
+  //   isChecked.checked = !isChecked.checked;
+  // }
+  console.log(isChecked);
+  // console.log((isChecked.checked = !isChecked.checked));
+  // if (isChecked !== undefined) {
+  //   console.log("yes");
+  //   console.log((advices.checked = !advices.checked));
+  // } else {
+  //   console.log("maybe");
+  // }
+  // console.log(isChecked);
+  // console.log(isChecked);
+  // if (isChecked!== undefined) {
+  //   todo.completed = !todo.completed;
+  //   savingTodos();
   // }
 };
 
 getSavedAdvices();
 
-export { toggleAdvice, createAdvice, removeAdvice, getAdvice, saveAdvices };
+export {
+  toggleAdvice,
+  createAdvice,
+  removeAdvice,
+  getAdvice,
+  saveAdvices,
+  toggleChecked,
+  getSavedAdvices,
+  isBookmardChecked,
+};

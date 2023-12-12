@@ -38,7 +38,7 @@ const renderAdvices = () => {
   adviceContainer.innerHTML = "";
 
   filterAdvices.forEach((advice) => {
-    console.log(advice);
+    // console.log(advice);
     adviceContainer.append(genereateDOM(advice));
   });
 };
