@@ -54,9 +54,7 @@ const adviceAPI = () => {
     })
     .catch((err) => {
       console.log(err);
-      return (adviceText.textContent = "Error occur");
-      // return (adviceText.textContent = err);
-      // return (adviceText.textContent = "loading..........⏳");
+      return (adviceText.textContent = "Something went wrong..... 🚫");
     });
 };
 // call api after login
@@ -78,7 +76,6 @@ boomarkBtn.addEventListener("click", () => {
   const adviceTextToSave = document.querySelector("#advice").textContent;
   const state = false;
   console.log("clicked");
-  // console.log(adviceIdToSave, adviceTextToSave);
   if (
     adviceIdToSave === " " ||
     adviceTextToSave === "TypeError: Failed to fetch" ||
@@ -86,10 +83,6 @@ boomarkBtn.addEventListener("click", () => {
   ) {
     console.log("Failed to fetch data, please wait");
   } else {
-    // const check = getAdvice().find(
-    //   (advice) => advice.adviceId !== adviceIdToSave
-    // );
-    // if (check !== undefined && check.adviceId !== adviceIdToSave) {
     toggleAdvice(adviceIdToSave, adviceTextToSave, state);
     renderAdvices();
     // }
@@ -104,3 +97,68 @@ bookmarkColorToggle.addEventListener("click", () => {
     bookmarkShadow.classList.remove("bookmark-shadow");
   }
 });
+
+//################# NAVBAR #################
+const menuIcon = document.querySelector(".menu-icon");
+const openAndCloseNavBar = document.querySelector(".navbar-open ");
+
+// state
+let isNavbarOpen = false;
+menuIcon.addEventListener("click", () => {
+  isNavbarOpen = !isNavbarOpen;
+  if (isNavbarOpen) {
+    openAndCloseNavBar.style.display = "flex";
+    document.body.style.overflowY = "hidden";
+  } else {
+    openAndCloseNavBar.style.display = "none";
+    document.body.style.overflowY = "auto";
+  }
+  // console.log(isNavbarOpen);
+});
+
+// mine
+// saved advice
+document.querySelector(".saved-advice").addEventListener("click", () => {
+  console.log("hello");
+  // control open/close navbar
+  isNavbarOpen = false;
+  openAndCloseNavBar.style.display = "none";
+  document.body.style.overflowY = "auto";
+  document.querySelector(".advice-container").style.display = "none";
+  document.querySelector(".main-container ").style.display = "grid";
+});
+
+// normal api
+document.querySelector(".new-advice ").addEventListener("click", () => {
+  console.log("bye bye");
+  isNavbarOpen = false;
+  openAndCloseNavBar.style.display = "none";
+  document.body.style.overflowY = "auto";
+  document.querySelector(".advice-container").style.display = "grid";
+  document.querySelector(".advice-container").style.display = "relative";
+  document.querySelector(".main-container ").style.display = "none";
+});
+
+// trailer
+// const links = document.querySelectorAll(".link");
+// links.forEach((link) => {
+//   link.addEventListener("click", () => {
+//     //   // console.log("clicked", link);
+//     isNavbarOpen = false;
+//     openAndCloseNavBar.style.display = "none";
+//     document.body.style.overflowY = "auto";
+//     if (link.classList.contains("new-advice")) {
+//       console.log("yes");
+//       // document.querySelector(".main-container").style.display = "hidden";
+//       // document.querySelector(".new-advice").style.display = "block";
+//       // document.querySelector(".menu").classList.toggle("block");
+//     } else {
+//       console.log("no");
+//       document.querySelector(".main-container").style.display = "grid";
+//       document.querySelector(".menu").classList.toggle("hidden");
+//       // document.querySelector(".menu").style.display = "hidden";
+//     }
+//     //   document.querySelector(".main-container").style.display = "grid";
+//     //   document.querySelector(".new-advice").style.display = "block";
+//   });
+// });
