@@ -1,7 +1,7 @@
 import { Client, Databases, ID, Query, Storage } from "appwrite";
 import conf from "../conf/conf";
-import userInfo from "../utils/userDetails";
 import { showErrorToast } from "../conf/ToastConfig";
+import userInfo from "../utils/userDetails";
 
 interface IAdvice {
   id: number;
@@ -10,8 +10,6 @@ interface IAdvice {
   userId: string;
   slug: string;
 }
-
-// const userData = await userInfo();
 
 export class DatabaseService {
   client: Client;
