@@ -7,7 +7,6 @@ html {
 }
 
 body {
-  /* @apply bg-D_gray-DEFAUT_Dark_Blue min-h-screen  flex flex-col justify-center; */
   @apply bg-D_gray-DEFAUT_Dark_Blue;
 }
 /* Animate dice button */
@@ -31,7 +30,6 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  /* background: #575757; */
   background: none;
   border-radius: 5rem;
 }
