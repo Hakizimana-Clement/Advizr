@@ -1,10 +1,15 @@
 import React from "react";
-import "./App.css";
+import Card from "./components/Layouts/Card";
+import Container from "./components/Layouts/Container";
+import Heading from "./components/Layouts/Heading";
 
 function App() {
   return (
     <>
-      <p>UI Loading...</p>
+      <Container>
+        <Heading />
+        <Card />
+      </Container>
     </>
   );
 }
