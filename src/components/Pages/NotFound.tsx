@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { notFoundImg } from "../../utils/Images";
+import { notFoundImg } from "../../utils/Image";
 import Button from "../Button";
 
 const NotFound = () => {

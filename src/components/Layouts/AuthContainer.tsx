@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { loginImg } from "../../utils/Images";
+import { loginImg } from "../../utils/Image";
 import BackButton from "../BackButton";
 import LoginButton from "../LoginButton";
 interface Props {

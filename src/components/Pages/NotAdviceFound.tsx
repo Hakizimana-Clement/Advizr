@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { emptyImg } from "../../utils/Images";
+import { emptyImg } from "../../utils/Image";
 import Button from "../Button";
 
 const NotAdviceFound = () => {

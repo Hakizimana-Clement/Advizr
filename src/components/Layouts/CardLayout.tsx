@@ -32,6 +32,7 @@ const CardLayout = () => {
   return (
     <>
       <main className="flex justify-center">
+     
         <div className="bg-D_gray-Dark_grayish_blue text-center py-6 px-5 rounded-lg relative w-[93%] sm:w-[65%] md:w-[55%] lg:w-[50%] xl:w-[34%]">
           <div className="drop-shadow-md absolute -top-1 right-3 hover:cursor-pointer">
             <Bookmarks />

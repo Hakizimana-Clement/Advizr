@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { loginImg } from "../../../utils/Images";
+import { loginImg } from "../../../utils/Image";
 import {
   ProfileSchema,
   ProfileSchemaType,

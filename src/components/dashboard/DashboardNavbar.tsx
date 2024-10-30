@@ -4,7 +4,7 @@ import { HiMenuAlt2 } from "react-icons/hi";
 import { MdArrowDropDownCircle } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { toggleModel } from "../../redux/features/navSlice";
-import { logo } from "../../utils/Images";
+import { logo } from "../../utils/Image";
 import Button from "../Button";
 import LogoutButton from "../LogoutButton";
 
