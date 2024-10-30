@@ -6,7 +6,7 @@ import {
   dice_button,
   pattern_divider_desktop,
   pattern_divider_mobile,
-} from "../../utils/Images";
+} from "../../utils/Image";
 import Bookmarks from "../Bookmarks";
 
 const CardLayout = () => {
