@@ -7,8 +7,9 @@ import {
   pattern_divider_desktop,
   pattern_divider_mobile,
 } from "../../utils/Images";
+import Bookmarks from "../Bookmarks";
 
-const Card = () => {
+const CardLayout = () => {
   const {
     data: advices,
     isLoading,
@@ -32,6 +33,9 @@ const Card = () => {
     <>
       <main className="flex justify-center">
         <div className="bg-D_gray-Dark_grayish_blue text-center py-6 px-5 rounded-lg relative w-[93%] sm:w-[65%] md:w-[55%] lg:w-[50%] xl:w-[34%]">
+          <div className="drop-shadow-md absolute -top-1 right-3 hover:cursor-pointer">
+            <Bookmarks onClick={() => console.log("clicked")} />
+          </div>
           {isLoading ? (
             <>
               <ScaleLoader color="#fff" />
@@ -83,4 +87,4 @@ const Card = () => {
     </>
   );
 };
-export default Card;
+export default CardLayout;

@@ -1,15 +1,10 @@
 import React from "react";
-import Card from "./components/Layouts/Card";
-import Container from "./components/Layouts/Container";
-import Heading from "./components/Layouts/Heading";
+import Routers from "./routes";
 
 function App() {
   return (
     <>
-      <Container>
-        <Heading />
-        <Card />
-      </Container>
+      <Routers />
     </>
   );
 }
