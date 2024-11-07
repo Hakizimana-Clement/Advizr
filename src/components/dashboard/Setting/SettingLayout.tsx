@@ -8,8 +8,10 @@ import {
 } from "../../../utils/validations/Profile/Profile.validation";
 import Button from "../../Button";
 import FormInput from "../../Forms/InputText";
-
-const SettingLayout = () => {
+interface Props {
+  isVisible: boolean;
+}
+const SettingLayout = ({ isVisible }: Props) => {
   const {
     register,
     handleSubmit,
@@ -23,7 +25,11 @@ const SettingLayout = () => {
   };
   return (
     <>
-      <div className="col-span-5 lg:col-span-4 mt-3">
+      <div
+        className={`place-content-center h-screen transition-all duration-300 ${
+          isVisible ? "col-span-5" : "col-span-5"
+        } lg:col-span-4`}
+      >
         <div className="grid grid-cols-1 place-items-center gap-5 md:gap-6">
           <h2 className="text-center text-2xl text-D_gray-Ligth_cyan font-medium my-3 capitalize">
             My Setting
@@ -32,7 +38,7 @@ const SettingLayout = () => {
             <img src={loginImg} alt="profile image" />
           </div>
           <form
-            className="w-3/5 md:w-2/5 lg:w-1/3"
+            className="w-full md:w-3/5 lg:w-1/3"
             onSubmit={handleSubmit(onSubmit)}
           >
             <FormInput

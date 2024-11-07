@@ -2,22 +2,33 @@ import React from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { MdArrowDropDownCircle } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { toggleModel } from "../../redux/features/navSlice";
 import { logo } from "../../utils/Images";
 import Button from "../Button";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+
+  const handleToggle = () => {
+    dispatch(toggleModel());
+  };
+
   return (
     <header className="">
       <nav className="text-D_gray-Ligth_cyan border-color-400 py-2 border-b flex justify-between items-center px-3 relative">
         <div className="flex items-center justify-center gap-3">
           <ul>
-            <HiMenuAlt2
-              size={"1.4rem"}
-              className="hover:text-D_gray-Neon_green hover:cursor-pointer"
-            />
+            <li onClick={handleToggle}>
+              <HiMenuAlt2
+                size={"1.4rem"}
+                className="hover:text-D_gray-Neon_green hover:cursor-pointer"
+              />
+            </li>
           </ul>
-          <div>
+          <div className="flex justify-center items-center gap-1 font-medium text-sm">
             <img src={logo} alt="advizr logo" className="w-9" />
+            <h3 className="hidden md:block">Advizr App</h3>
           </div>
         </div>
         <ul className="justify-center gap-5 mr-4  flex">

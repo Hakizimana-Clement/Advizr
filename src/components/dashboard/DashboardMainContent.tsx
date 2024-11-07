@@ -1,11 +1,20 @@
 import React from "react";
 import CardLayout from "../Layouts/CardLayout";
 
-const MainContent = () => {
+interface Props {
+  isVisible: boolean;
+}
+
+const MainContent = ({ isVisible }: Props) => {
   return (
-    <div className="col-span-5 lg:col-span-4 place-content-center h-screen">
+    <div
+      className={`place-content-center h-screen transition-all duration-300 ${
+        isVisible ? "col-span-5" : "col-span-5"
+      } lg:col-span-4`}
+    >
       <CardLayout />
     </div>
   );
 };
+
 export default MainContent;

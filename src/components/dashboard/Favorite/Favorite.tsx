@@ -1,7 +1,10 @@
 import React from "react";
 import Trash from "../../Trash";
+interface Props {
+  isVisible: boolean;
+}
 
-const FavoriteLayout = () => {
+const FavoriteLayout = ({ isVisible }: Props) => {
   const myFavorite = [
     {
       id: 4,
@@ -45,8 +48,12 @@ const FavoriteLayout = () => {
 
   return (
     <>
-      <div className="col-span-5 lg:col-span-4 mt-3">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-2 px-3 lg:py-0 ">
+      <div
+        className={`place-content-center h-screen transition-all duration-300 ${
+          isVisible ? "col-span-5" : "col-span-5"
+        } lg:col-span-4`}
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4 py-0 px-3 lg:py-0">
           {myFavorite.map((fav) => (
             <div className="relative" key={fav.id}>
               {/* start bookmark */}

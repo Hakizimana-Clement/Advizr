@@ -5,6 +5,8 @@ interface Props {
 }
 
 const DashboardContainer = ({ children }: Props) => {
-  return <div className="text-white grid grid-cols-5 ">{children}</div>;
+  return (
+    <div className="text-white grid grid-cols-7 lg:grid-cols-5">{children}</div>
+  );
 };
 export default DashboardContainer;
