@@ -1,6 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import authService from "../../appwrite/auth";
+import { showErrorToast, showSuccessToast } from "../../conf/ToastConfig";
 import {
   SignupSchema,
   SignupSchemaType,
@@ -9,6 +13,8 @@ import Button from "../Button";
 import FormInput from "../Forms/InputText";
 
 const SignupForm = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -17,8 +23,37 @@ const SignupForm = () => {
     resolver: zodResolver(SignupSchema),
   });
 
-  const onSubmit = (data: SignupSchemaType) => {
-    console.log("signup data", data);
+  const signupData = useMutation({
+    mutationFn: (userinfo: {
+      email: string;
+      name: string;
+      password: string;
+    }) => {
+      return authService.createAccount(userinfo);
+    },
+    onSuccess: () => {
+      showSuccessToast("Account created successfull");
+      navigate("/users/login");
+    },
+    onError: (error: unknown) => {
+      const typeError = error as Error;
+      if (
+        typeError.message ===
+        "A user with the same id, email, or phone already exists in this project."
+      ) {
+        showErrorToast("User already exists");
+      }
+    },
+  });
+
+  const onSubmit = async (data: SignupSchemaType) => {
+    try {
+      const { email, username, password } = data;
+      signupData.mutate({ email, name: username, password });
+    } catch (error: unknown) {
+      const typeError = error as Error;
+      showErrorToast(typeError.message);
+    }
   };
 
   return (

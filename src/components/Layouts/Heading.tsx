@@ -4,7 +4,7 @@ import LoginButton from "../LoginButton";
 const Heading = () => {
   return (
     <>
-      <LoginButton />
+      <LoginButton url="/users/login" />
       <header className="mb-14 md:mb-16">
         <h1 className="text-center text-3xl text-white font-bold tracking-widest">
           Advizr
