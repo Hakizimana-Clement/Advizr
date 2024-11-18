@@ -5,11 +5,9 @@ export const LoginSchema = z.object({
     .string()
     .min(1, "This field can't be empty")
     .email({ message: "Invalid email address" }),
-  password: z.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/, {
-    message:
-      "Password must be at least 8 characters: lowercase, uppercase, digit, and special character",
-  }),
-  confirmPassword: z.string(),
+  password: z
+    .string()
+    .min(5, { message: "Password must be 5 or more characters long" }),
 });
 
 export type LoginSchemaType = z.infer<typeof LoginSchema>;

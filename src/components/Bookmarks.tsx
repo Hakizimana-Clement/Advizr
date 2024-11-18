@@ -1,30 +1,28 @@
 import React, { useState } from "react";
 import { HiOutlineBookmark } from "react-icons/hi";
+import { showInfoToast, showSuccessToast } from "../conf/ToastConfig";
+import userInfo from "../utils/userDetails";
 
-interface Props {
-  onClick: () => void;
-}
-
-const Bookmarks = ({ onClick }: Props) => {
+const Bookmarks = () => {
   const [status, setStatus] = useState(false);
-  const handleToggle = () => {
-    setStatus(!status);
-    onClick();
+
+  const handleToggle = async () => {
+    const userData = await userInfo();
+
+    if (userData?.status) {
+      showSuccessToast("Advice saved!");
+
+      setStatus(true);
+    } else {
+      showInfoToast("Please log in to save this Advice.");
+    }
   };
-  if (status)
-    return (
-      <HiOutlineBookmark
-        size="40"
-        fill="#54cf91"
-        color="#54cf91"
-        onClick={handleToggle}
-      />
-    );
+
   return (
     <HiOutlineBookmark
       size="40"
-      fill="#cee3e9"
-      color="#cee3e9"
+      fill={status ? "#54cf91" : "#cee3e9"}
+      color={status ? "#54cf91" : "#cee3e9"}
       onClick={handleToggle}
     />
   );

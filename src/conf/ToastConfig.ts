@@ -27,7 +27,7 @@ const customToastOptionSuccess: ToastOptions = {
 
 const customToastOptionInfo: ToastOptions = {
   className:
-    "mx-3 mt-4 sm:mx-0 md:mt-0 bg-blue-400 text-white p-4 rounded shadow-lg",
+    "mx-3 mt-4 sm:mx-0 md:mt-0 bg-white text-black/80 p-4 rounded shadow-lg",
   bodyClassName: "text-sm",
 };
 

@@ -42,7 +42,7 @@ export class AuthService {
   async login({ email, password }: Props) {
     try {
       return await this.account.createEmailPasswordSession(email, password);
-    } catch (error) {
+    } catch (error: unknown) {
       throw error;
     }
   }
@@ -51,7 +51,10 @@ export class AuthService {
     try {
       return await this.account.get();
     } catch (error: unknown) {
-      console.log("Appwrite service :: getCurrentUser():: ", error);
+      const typeError = error as Error;
+      if (typeError.message === "ser (role: guests) missing scope (account)") {
+        return null;
+      }
     }
     return null;
   }

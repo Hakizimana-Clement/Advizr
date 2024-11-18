@@ -1,7 +1,9 @@
 import React, { ReactNode, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 import RingLoader from "react-spinners/RingLoader";
 import { useAppSelector } from "../redux/hooks/hooks";
+import userInfo from "../utils/userDetails";
 
 interface Props {
   children?: ReactNode;
@@ -9,12 +11,20 @@ interface Props {
 }
 
 const ProtectedRoutes = ({ children, authentication = true }: Props) => {
+  const dispatch = useDispatch();
+
   const authStatus = useAppSelector((state) => state.auth.status);
+
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
-    setLoader(false);
-  }, []);
+    const checkUserSession = async () => {
+      await userInfo();
+      setLoader(false);
+    };
+
+    checkUserSession();
+  }, [dispatch]);
 
   if (loader) {
     return (
@@ -29,7 +39,7 @@ const ProtectedRoutes = ({ children, authentication = true }: Props) => {
   }
 
   if (!authentication && authStatus) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/users/dashboard" replace />;
   }
 
   return children ? <>{children}</> : <Outlet />;

@@ -3,6 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import { ClipLoader } from "react-spinners";
 import authService from "../../appwrite/auth";
 import { showErrorToast, showSuccessToast } from "../../conf/ToastConfig";
 import {
@@ -23,7 +24,7 @@ const SignupForm = () => {
     resolver: zodResolver(SignupSchema),
   });
 
-  const signupData = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: (userinfo: {
       email: string;
       name: string;
@@ -46,10 +47,10 @@ const SignupForm = () => {
     },
   });
 
-  const onSubmit = async (data: SignupSchemaType) => {
+  const onSubmit = (data: SignupSchemaType) => {
     try {
       const { email, username, password } = data;
-      signupData.mutate({ email, name: username, password });
+      mutate({ email, name: username, password });
     } catch (error: unknown) {
       const typeError = error as Error;
       showErrorToast(typeError.message);
@@ -82,8 +83,18 @@ const SignupForm = () => {
         {...register("confirmPassword")}
         error={errors.confirmPassword}
       />
-      <Button buttonType="submit" styles="py-3 md:py-2 my-5 px-3 mb-8">
-        Register Now
+      <Button
+        buttonType="submit"
+        styles="py-3 md:py-2 my-5 px-3 mb-8 flex justify-center"
+      >
+        {isPending ? (
+          <span className="flex items-center gap-3">
+            <ClipLoader size={25} color="#fff" />
+            {"Authenticating...."}
+          </span>
+        ) : (
+          <span>Register Now</span>
+        )}
       </Button>
     </form>
   );

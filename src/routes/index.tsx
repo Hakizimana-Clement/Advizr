@@ -14,9 +14,12 @@ function Routers() {
     <>
       <Routes>
         <Route path="/" element={<Card />} />
-        <Route path="/users/login" element={<Login />} />
-        <Route path="/users/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
+
+        <Route element={<ProtectedRoutes authentication={false} />}>
+          <Route path="/users/login" element={<Login />} />
+          <Route path="/users/signup" element={<Signup />} />
+        </Route>
 
         <Route element={<ProtectedRoutes authentication />}>
           <Route path="/users/dashboard" element={<Dashboard />} />
