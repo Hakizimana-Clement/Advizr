@@ -1,13 +1,17 @@
 import { Client, Databases, ID, Query, Storage } from "appwrite";
 import conf from "../conf/conf";
+import userInfo from "../utils/userDetails";
+import { showErrorToast } from "../conf/ToastConfig";
 
-interface Props {
-  id: string;
+interface IAdvice {
+  id: number;
   advice: string;
   status: string;
   userId: string;
   slug: string;
 }
+
+// const userData = await userInfo();
 
 export class DatabaseService {
   client: Client;
@@ -15,6 +19,7 @@ export class DatabaseService {
   bucket: Storage;
 
   constructor() {
+    this.client = new Client();
     this.client
       .setEndpoint(conf.appwriteProjectUrl)
       .setProject(conf.appwriteProjectId);
@@ -23,7 +28,7 @@ export class DatabaseService {
   }
 
   // database service
-  async getAdvice({ slug }: Props) {
+  async getAdvice({ slug }: IAdvice) {
     try {
       return await this.databases.getDocument(
         conf.appwriteDatabaseId,
@@ -36,21 +41,32 @@ export class DatabaseService {
     }
   }
 
-  // async getAdvices(queries:boolean[] = [Query.equal('isSaved',"true")]){
-  async getAdvices(queries: string[] = [Query.equal("status", "true")]) {
+  async getAdvices(): Promise<IAdvice[] | undefined> {
     try {
-      return await this.databases.listDocuments(
+      const userData = await userInfo();
+
+      if (!userData?.$id) {
+        showErrorToast("user Not logged in");
+        return [];
+      }
+
+      const res = await this.databases.listDocuments(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        queries
+        [
+          Query.equal("userId", [userData.$id]),
+          // Query.equal("status", ["false"]),
+        ]
       );
+      return res.documents as unknown as IAdvice[];
     } catch (error: unknown) {
-      console.log("Appwrite service :: getAdvices() :: ", error);
-      return false;
+      const typeError = error as Error;
+      console.log("Appwrite service :: getAdvices() :: ", typeError);
+      return [];
     }
   }
 
-  async saveAdvice({ advice, id, status, userId }: Props) {
+  async saveAdvice({ advice, id, status, userId }: IAdvice) {
     try {
       return await this.databases.createDocument(
         conf.appwriteDatabaseId,
@@ -69,7 +85,7 @@ export class DatabaseService {
     }
   }
 
-  async updateAdvice(slug: string, { status }: Props) {
+  async updateAdvice(slug: string, { status }: IAdvice) {
     console.log("---------- document id to update advice in bookmark: ", slug);
     // async updateAdvice({status:string}){
     try {

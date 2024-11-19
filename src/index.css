@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   /* @apply bg-D_gray-DEFAUT_Dark_Blue min-h-screen  flex flex-col justify-center; */
   @apply bg-D_gray-DEFAUT_Dark_Blue;
 }
-
+/* Animate dice button */
 @keyframes rotateAnticlockwise {
   from {
     transform: rotate(0deg);
@@ -18,4 +22,21 @@ body {
 
 .rotate {
   animation: rotateAnticlockwise 1s linear infinite;
+}
+
+/* change scroll bar color */
+::-webkit-scrollbar {
+  width: 0.45rem;
+  margin-left: 2rem;
+}
+
+::-webkit-scrollbar-track {
+  /* background: #575757; */
+  background: none;
+  border-radius: 5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4ac788;
+  border-radius: 5px;
 }

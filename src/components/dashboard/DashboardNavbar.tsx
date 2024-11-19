@@ -22,8 +22,8 @@ const Navbar = () => {
   };
 
   return (
-    <header className="">
-      <nav className="text-D_gray-Ligth_cyan border-color-400 py-2 border-b flex justify-between items-center px-3 relative">
+    <header>
+      <nav className="text-D_gray-Ligth_cyan border-color-400 py-2 border-b flex justify-between items-center px-3 relative z-20 bg-D_gray-DEFAUT_Dark_Blue">
         <div className="flex items-center justify-center gap-3">
           <ul>
             <li onClick={handleToggle}>
@@ -48,7 +48,7 @@ const Navbar = () => {
               <MdArrowDropDownCircle className="" />
             </Button>
             <div
-              className={`text-white absolute top-12 right-2 bg-slate-500 py-1 px-3 rounded r  hover:bg-D_gray-Neon_green_Dark ${
+              className={`text-white absolute top-12 right-2 bg-slate-500 py-1 px-3 rounded r  hover:bg-D_gray-Neon_green_Dark z-10 ${
                 showLogout ? "flex" : "hidden"
               }`}
             >
