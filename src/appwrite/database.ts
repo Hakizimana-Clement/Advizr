@@ -8,7 +8,6 @@ interface IAdvice {
   advice: string;
   status: string;
   userId: string;
-  slug: string;
 }
 
 export class DatabaseService {
@@ -26,12 +25,12 @@ export class DatabaseService {
   }
 
   // database service
-  async getAdvice({ slug }: IAdvice) {
+  async getAdvice({ id }: IAdvice) {
     try {
       return await this.databases.getDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        slug
+        id.toString()
       );
     } catch (error: unknown) {
       console.log("Appwrite service :: getAdvice() :: ", error);
@@ -64,7 +63,7 @@ export class DatabaseService {
     }
   }
 
-  async saveAdvice({ advice, id, status, userId }: IAdvice) {
+  async saveAdvice({ id, advice, userId, status }: IAdvice) {
     try {
       return await this.databases.createDocument(
         conf.appwriteDatabaseId,
