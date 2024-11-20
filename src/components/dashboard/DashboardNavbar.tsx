@@ -3,6 +3,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { MdArrowDropDownCircle } from "react-icons/md";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import { toggleModel } from "../../redux/features/navSlice";
 import { logo } from "../../utils/Image";
 import Button from "../Button";
@@ -10,6 +11,8 @@ import LogoutButton from "../LogoutButton";
 
 const Navbar = () => {
   const [showLogout, setShowLogout] = useState(false);
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -33,7 +36,10 @@ const Navbar = () => {
               />
             </li>
           </ul>
-          <div className="flex justify-center items-center gap-1 font-medium text-sm">
+          <div
+            className="flex justify-center items-center gap-1 font-medium text-sm cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             <img src={logo} alt="advizr logo" className="w-9" />
             <h3 className="hidden md:block">Advizr App</h3>
           </div>
