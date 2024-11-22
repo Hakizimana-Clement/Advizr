@@ -16,8 +16,19 @@ interface IAdvice {
 }
 
 const Bookmarks = ({ id, advice }: IAdvice) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
+
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      const userData = await userInfo();
+      if (userData?.status) {
+        setUserId(userData.$id);
+      }
+    };
+    fetchUserInfo();
+  }, []);
 
   const { data: myFavorite } = useQuery({
     queryKey: ["favorite"],
@@ -26,51 +37,53 @@ const Bookmarks = ({ id, advice }: IAdvice) => {
 
   const isFavorite = myFavorite?.some((adviceId) => adviceId.id === id);
 
+  const deleteAdviceMutation = useMutation({
+    mutationFn: (documentId: string) =>
+      databaseService.deleteAdvice(documentId),
+    onSuccess() {
+      showSuccessToast("Advice removed from saved!");
+      queryClient.invalidateQueries({ queryKey: ["favorite"] });
+    },
+    onError(error: unknown) {
+      showErrorToast((error as Error).message);
+    },
+  });
+
   const saveAdviceMutation = useMutation({
     mutationFn: (IAdvice: {
       id: number;
       advice: string;
       status: string;
       userId: string;
-    }) => {
-      return databaseService.saveAdvice(IAdvice);
-    },
+    }) => databaseService.saveAdvice(IAdvice),
     onSuccess() {
-      queryClient.invalidateQueries({ queryKey: ["favorite"] });
       showSuccessToast("Advice saved!");
+      queryClient.invalidateQueries({ queryKey: ["favorite"] });
     },
     onError(error: unknown) {
-      const typeError = error as Error;
-      showErrorToast(typeError.message);
+      showErrorToast((error as Error).message);
     },
   });
 
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      const userData = await userInfo();
-      setIsLoggedIn(!!userData?.status);
-    };
-    fetchUserInfo();
-  }, []);
-
   const handleToggle = async () => {
-    const data = await userInfo();
-
-    if (!isLoggedIn) {
+    if (!userId) {
       showInfoToast("Please log in to save this Advice.");
       return;
     }
 
     if (isFavorite) {
-      //TODO: detele advice in database
-
-      showErrorToast("Advice removed from saved!");
+      const documentToDelete = myFavorite?.find(
+        (documentId) => documentId.id === id
+      );
+      if (documentToDelete) {
+        return deleteAdviceMutation.mutate(documentToDelete.$id as string);
+      }
     } else {
       return saveAdviceMutation.mutate({
         id,
         advice,
         status: "true",
-        userId: data?.$id as string,
+        userId,
       });
     }
   };
