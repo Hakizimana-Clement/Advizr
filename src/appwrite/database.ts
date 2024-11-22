@@ -3,11 +3,12 @@ import conf from "../conf/conf";
 import { showErrorToast } from "../conf/ToastConfig";
 import userInfo from "../utils/userDetails";
 
-interface IAdvice {
+interface AdviceProps {
   id: number;
   advice: string;
   status: string;
   userId: string;
+  $id?: string;
 }
 
 export class DatabaseService {
@@ -25,7 +26,7 @@ export class DatabaseService {
   }
 
   // database service
-  async getAdvice({ id }: IAdvice) {
+  async getAdvice({ id }: AdviceProps) {
     try {
       return await this.databases.getDocument(
         conf.appwriteDatabaseId,
@@ -38,24 +39,20 @@ export class DatabaseService {
     }
   }
 
-  async getAdvices(): Promise<IAdvice[] | undefined> {
+  async getAdvices(): Promise<AdviceProps[] | undefined> {
     try {
       const userData = await userInfo();
 
       if (!userData?.$id) {
-        showErrorToast("user Not logged in");
         return [];
       }
 
       const res = await this.databases.listDocuments(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        [
-          Query.equal("userId", [userData.$id]),
-          // Query.equal("status", ["false"]),
-        ]
+        [Query.equal("userId", [userData.$id])]
       );
-      return res.documents as unknown as IAdvice[];
+      return res.documents as unknown as AdviceProps[];
     } catch (error: unknown) {
       const typeError = error as Error;
       console.log("Appwrite service :: getAdvices() :: ", typeError);
@@ -63,7 +60,7 @@ export class DatabaseService {
     }
   }
 
-  async saveAdvice({ id, advice, userId, status }: IAdvice) {
+  async saveAdvice({ id, advice, userId, status }: AdviceProps) {
     try {
       return await this.databases.createDocument(
         conf.appwriteDatabaseId,
@@ -82,7 +79,7 @@ export class DatabaseService {
     }
   }
 
-  async updateAdvice(slug: string, { status }: IAdvice) {
+  async updateAdvice(slug: string, { status }: AdviceProps) {
     console.log("---------- document id to update advice in bookmark: ", slug);
     // async updateAdvice({status:string}){
     try {
@@ -99,15 +96,17 @@ export class DatabaseService {
     }
   }
 
-  async deleteAdvice(slug: string) {
-    console.log("---------- document id to delete advice in bookmark: ", slug);
-    // async updateAdvice({status:string}){
+  async deleteAdvice(documentId: string) {
     try {
-      // return await this.databases.updateDocument(conf.appwriteDatabaseId,conf.appwriteCollectionId,ID.unique())
+      if (!documentId) {
+        showErrorToast("documentId is missing");
+        return;
+      }
+
       await this.databases.deleteDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        slug
+        documentId
       );
       return true;
     } catch (error: unknown) {
