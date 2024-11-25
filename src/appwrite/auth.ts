@@ -66,6 +66,17 @@ export class AuthService {
       console.log("Appwrite service :: logout():: ", error);
     }
   }
+
+  async updateName(name: string) {
+    try {
+      if (name) {
+        return await this.account.updateName(name);
+      }
+    } catch (error) {
+      console.log("Appwrite service :: updateName() :: ", error);
+      return false;
+    }
+  }
 }
 
 const authService = new AuthService();
