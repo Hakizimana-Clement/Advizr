@@ -85,7 +85,7 @@ const SignupForm = () => {
       />
       <Button
         buttonType="submit"
-        styles="py-3 md:py-2 my-5 px-3 mb-8 flex justify-center"
+        styles="py-2 my-5 px-3 mb-8 flex justify-center"
       >
         {isPending ? (
           <span className="flex items-center gap-3">

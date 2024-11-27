@@ -5,7 +5,7 @@ import LoginSignupCard from "../cards/LoginSignupCard";
 const Login = () => {
   return (
     <>
-      <AuthContainer>
+      <AuthContainer imgTitle={"login"}>
         <LoginSignupCard
           title="Login"
           ctaText="You don't have an account? "
