@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import ForgottonPassword from "../components/Layouts/ForgottonPassword";
 import Card from "../components/Pages/Card";
 import Dashboard from "../components/Pages/Dashboard";
 import Favorite from "../components/Pages/Favorite";
@@ -19,6 +20,10 @@ function Routers() {
         <Route element={<ProtectedRoutes authentication={false} />}>
           <Route path="/users/login" element={<Login />} />
           <Route path="/users/signup" element={<Signup />} />
+          <Route
+            path="/users/forgot-password"
+            element={<ForgottonPassword />}
+          />
         </Route>
 
         <Route element={<ProtectedRoutes authentication />}>
